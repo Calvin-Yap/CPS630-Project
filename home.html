@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 1 Iteration 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+ <script>
+ $(document).ready(function(){
+    $(".fade1").hide();
+	$(".cap").hide();
+
+    $(".fade").change(function(){
+		$(".cap").fadeIn();
+        $(".fade1").fadeIn();
+		$(".cap2").fadeOut();
+		$(".fade2").fadeOut();
+    });
+});
+ </script>
+ <script>
+ $(document).ready(function(){
+    $(".fade2").hide();
+	$(".cap2").hide();
+    $(".fade1").change(function(){
+			$(".cap2").fadeIn();
+        $(".fade2").fadeIn();
+    });
+});
+ </script>
+
+  </head>
+
+<body>
+<table>
+<tr>
+<th><h1>Home</h1></th>
+<th><h1>About Us</h1></th>
+<th><h1>Contact Us</h1></th>
+<th><h1>Shopping Cart</h1></th>
+</table>
+<caption>Continents</caption>
+ <select name="continents" id="continents" class="fade" >
+			<option value ="0">Select a Continent</option>
+            <option value ="p1">North America</option>
+            <option value ="p2">South America</option>
+            <option value ="p3">Central America</option>
+            <option value ="p4">Asia</option>
+			<option value ="p5">Africa</option>
+</select>
+<caption>Popular Places </caption>
+ <select>
+            <option value ="0">Popular Places</option>
+            <option value ="eiffel">Eiffel Tower, Paris, France</option>
+            <option value ="colosseum">Colosseum, Rome, Italy</option>
+            <option value ="louvre">Louvre Museum, Paris, France</option>
+            <option value ="ggb">Golden Gate Bridge, California, USA</option>
+			<option value ="disney">Walt Dinesy World, Florida, USA </option>
+</select>
+<br>
+
+
+<label class="cap">Countries</label>
+<select id = "country" name="country" class="fade1">
+<script>
+	 let countries = {
+        "p1": [
+		{
+		value: "Country",
+		desc:"Select a Country"
+		},{
+          value: "Canada",
+          desc: "Canada"
+        },{
+          value: "USA",
+          desc: "USA"
+        }],
+		 "p2": [{
+		value: "Country",
+		desc:"Select a Country"
+		},{
+          value: "Brazil",
+          desc: "Brazil"
+        }, {
+          value: "Argentina",
+          desc: "Argentina"
+        }],
+        "p3": [{
+		value: "Country",
+		desc:"Select a Country"
+		},{
+          value: "Panama",
+          desc: "Panama"
+        }, {
+          value: "Coasta Rica",
+          desc: "Coasta Rica"
+        }],
+        "p4": [{
+		value: "Country",
+		desc:"Select a Country"
+		},{
+          value: "China",
+          desc: "China"
+        }, {
+          value: "Korea",
+          desc: "Korea"
+        }],
+        "p5": [{
+		value: "Country",
+		desc:"Select a Country"
+		},{
+          value: "South Africa",
+          desc: "South Africa"
+        }, {
+          value: "Nigeria",
+          desc: "Nigeria"
+        }]
+      }
+		document.getElementsByName('continents')[0].addEventListener('change', function(e) {
+        document.getElementsByName('country')[0].innerHTML = countries[this.value].reduce((acc, elem) => `${acc}<option value="${elem.value}">${elem.desc}</option>`, "");
+	  });
+ </script>
+</select>
+<label class="cap2">Attractions</label>
+ <select id = "attraction" name="attraction" class="fade2">
+<script>
+	 let attractions = {
+        "Canada": [{
+          value: "Ryerson Univeristy",
+          desc: "Ryerson Univeristy"
+        }, {
+          value: "Banff National Park",
+          desc: "Banff National Park"
+        }],
+		 "USA": [{
+          value: "Statue of Liberty",
+          desc: "Statue of Liberty"
+        }, {
+          value: "Grand Canyon",
+          desc: "Grand Canyon"
+        }],
+        "Brazil": [{
+          value: "Christ the Redeemer",
+          desc: "Christ the Redeemer"
+        }, {
+          value: "Sugarloaf Moutain",
+          desc: "Sugarloaf Moutain"
+        }],
+        "Argentina": [{
+          value: "Perito Moreno Glacier",
+          desc: "Perito Moreno Glacier"
+        }, {
+          value: "La Boca",
+          desc: "La Boca"
+        }],
+        "Panama": [{
+          value: "Gatun Lake",
+          desc: "Gatun Lake"
+        }, {
+          value: "San Blas Island",
+          desc: "San Blas Island"
+        }],
+		 "Costa Rica": [{
+          value: "Arenal Vocano",
+          desc: "Areal Vocano"
+        }, {
+          value: "Parque Nacional Manuel Antonio",
+          desc: "Parque Nacional Manuel Antonio"
+        }],
+        "China": [{
+          value: "Great Wall of China",
+          desc: "Great Wall of China"
+        }, {
+          value: "Forbidden City",
+          desc: "Forbidden City"
+        }],
+        "Korea": [{
+          value: "N Seoul Tower",
+          desc: "N Seoul Tower"
+        }, {
+          value: "Gyeongbokgung Palace",
+          desc: "Gyeongbokgung Palace"
+        }],
+        "South Africa": [{
+          value: "Cape of Good Hope",
+          desc: "Cape of Good Hope"
+        }, {
+          value: "Kruger National Park",
+          desc: "Kruger National Park"
+        }],
+        "Nigeria": [{
+          value: "Zuma Rock",
+          desc: "Zuma Rock"
+        }, {
+          value: "Yankari National Park",
+          desc: "Yankari National Park"
+        }]
+		}
+		document.getElementsByName('country')[0].addEventListener('change', function(e) {
+        document.getElementsByName('attraction')[0].innerHTML = attractions[this.value].reduce((acc, elem) => `${acc}<option value="${elem.value}">${elem.desc}</option>`, "");
+	  });
+ </script>
+ </select>
+ 
+
+ 
+  <script>
+        
+        function getSelectValue()
+        {
+            var selectedValue = document.getElementById('country').value;
+            console.log(selectedValue);
+        }
+        getSelectValue();
+
+    </script>
+</body>
+</html>
