@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
-	img{width:300px; height:auto;}
+	img{margin-left:10%; margin-right:10%;width:80%; height:350px;}
 </style>
  <script>
  $(document).ready(function(){
@@ -61,7 +61,7 @@
       <p><span style="font-size:25px;">Contact Us</span></p>
       <p>
         Calvin Yap
-        <br>email
+        <br>calvin.yap@ryerson.ca
       </p>
       <p>
         Nicky Dam
@@ -113,6 +113,11 @@
   }
 </script>
 
+
+<div class="container-fluid"> 
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
 <caption>Continents</caption>
  <select name="continents" id="fade"  >
 			<option value ="0">Select a Continent</option>
@@ -122,16 +127,7 @@
             <option value ="p4">Asia</option>
 			<option value ="p5">Africa</option>
 </select>
-<caption>Popular Places </caption>
- <select>
-            <option value ="0">Popular Places</option>
-            <option value ="eiffel">Eiffel Tower, Paris, France</option>
-            <option value ="colosseum">Colosseum, Rome, Italy</option>
-            <option value ="louvre">Louvre Museum, Paris, France</option>
-            <option value ="ggb">Golden Gate Bridge, California, USA</option>
-			<option value ="disney">Walt Dinesy World, Florida, USA </option>
-</select>
-<br>
+
 
 
 <label class="cap">Countries</label>
@@ -196,77 +192,108 @@
  </script>
 </select>
 <label class="cap2">Attractions</label>
- <select id = "attraction" name="attraction" class="fade2">
+ <select id = "changeImage" name="attraction" class="fade2">
 <script>
 	 let attractions = {
-        "Canada": [{
-          value: "CN Tower",
+        "Canada": [
+		{
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "5",
           desc: "CN Tower"
         }, {
-          value: "Banff National Park",
+          value: "6",
           desc: "Banff National Park"
         }],
 		 "USA": [{
-          value: "Statue of Liberty",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "7",
           desc: "Statue of Liberty"
         }, {
-          value: "Grand Canyon",
+          value: "8",
           desc: "Grand Canyon"
         }],
         "Brazil": [{
-          value: "Christ the Redeemer",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "9",
           desc: "Christ the Redeemer"
         }, {
-          value: "Sugarloaf Moutain",
+          value: "10",
           desc: "Sugarloaf Moutain"
         }],
         "Argentina": [{
-          value: "Perito Moreno Glacier",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "11",
           desc: "Perito Moreno Glacier"
         }, {
-          value: "La Boca",
+          value: "12",
           desc: "La Boca"
         }],
         "Panama": [{
-          value: "Gatun Lake",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "13",
           desc: "Gatun Lake"
         }, {
-          value: "San Blas Island",
+          value: "14",
           desc: "San Blas Island"
         }],
 		 "Costa Rica": [{
-          value: "Arenal Volcano",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "15",
           desc: "Areal Volcano"
         }, {
-          value: "Parque Nacional Manuel Antonio",
+          value: "16",
           desc: "Parque Nacional Manuel Antonio"
         }],
         "China": [{
-          value: "Great Wall of China",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "17",
           desc: "Great Wall of China"
         }, {
-          value: "Forbidden City",
+          value: "18",
           desc: "Forbidden City"
         }],
         "Korea": [{
-          value: "N Seoul Tower",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "19",
           desc: "N Seoul Tower"
         }, {
-          value: "Gyeongbokgung Palace",
+          value: "20",
           desc: "Gyeongbokgung Palace"
         }],
         "South Africa": [{
-          value: "Cape of Good Hope",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "21",
           desc: "Cape of Good Hope"
         }, {
-          value: "Kruger National Park",
+          value: "22",
           desc: "Kruger National Park"
         }],
         "Nigeria": [{
-          value: "Zuma Rock",
+		value: "0",
+		desc:"Select an Attraction"
+		},{
+          value: "23",
           desc: "Zuma Rock"
         }, {
-          value: "Yankari National Park",
+          value: "24",
           desc: "Yankari National Park"
         }]
 		}
@@ -275,43 +302,247 @@
 	  });
  </script>
  </select>
+ <br>
+<caption>Popular Places </caption>
+ <select id="changeImage1">
+            <option value ="-1">Popular Places</option>
+            <option value ="0" selected>Eiffel Tower, Paris, France</option>
+            <option value ="1">Colosseum, Rome, Italy</option>
+            <option value ="2">Louvre Museum, Paris, France</option>
+            <option value ="3">Golden Gate Bridge, California, USA</option>
+			<option value ="4">Walt Disney World, Florida, USA </option>
+</select>
+<br>
+<div class="container-fluid">
+<div class="row>
+<div class="col">
+<img id="image" src="images/eiffel.jpg">
+</div> 
 
-<img src="images/eiffel.jpg" alt="Photo of the Eiffel Tower"/>
-<img src="images/colosseum.jpg" alt="Photo of the Rome Colosseum"/>
-<img src="images/louvre.jpg" alt="Photo of the Louvre"/>
-<img src="images/ggb.jpg" alt="Photo of the Golden Gate Bridge"/>
-<img src="images/disney.jpg" alt="Photo of Disney World"/>
+</div>
+<div class="row">
+<div class="col-12">
+<img id="image" src="images/eiffel.jpg">
+</div>
+</div>
+</div>
+<script>
 
-<img src="images/can1.jpg" alt="Photo of Disney World"/>
-<img src="images/can2.jpg" alt="Photo of Disney World"/>
+var imagesArr =[
+	"images/eiffel.jpg",
+	"images/colosseum.jpg",
+	"images/louvre.jpg",
+	"images/ggb.jpg",
+	"images/disney.jpg",
+	"images/can1.jpg",
+	"images/can2.jpg",
+	"images/usa1.jpg",
+	"images/usa2.jpg",	
+	"images/br1.jpg",
+	"images/br2.jpg",	
+	"images/arg1.jpg",
+	"images/arg2.jpg",
+	"images/pan1.jpg",
+	"images/pan2.jpg",	
+	"images/cos1.jpg",
+	"images/cos2.jpg",	
+	"images/cn1.jpg",
+	"images/cn2.jpg",	
+	"images/kr1.jpg",
+	"images/kr2.jpg",	
+	"images/af1.jpg",
+	"images/af2.jpg",	
+	"images/ni1.jpg",
+	"images/ni2.jpg"	
+	];
 
-<img src="images/usa1.jpg" alt="Photo of Disney World"/>
-<img src="images/usa2.jpg" alt="Photo of Disney World"/>
+$('#changeImage').change(function(){
+  $('#image')[0].src = imagesArr[this.value];
+});
+$('#changeImage1').change(function(){
+  $('#image')[0].src = imagesArr[this.value];
+});
+</script>
 
-<img src="images/br1.jpg" alt="Photo of Disney World"/>
-<img src="images/br2.jpg" alt="Photo of Disney World"/>
+</div>
+<div class="col-2"></div>
 
-<img src="images/arg1.jpg" alt="Photo of Disney World"/>
-<img src="images/arg2.jpg" alt="Photo of Disney World"/>
+</div>
+</div>
+<style>
 
-<img src="images/pan1.jpg" alt="Photo of Disney World"/>
-<img src="images/pan2.jpg" alt="Photo of Disney World"/>
+* {
+  box-sizing: border-box;
+}
 
-<img src="images/cos1.jpg" alt="Photo of Disney World"/>
-<img src="images/cos2.jpg" alt="Photo of Disney World"/>
+img {
+  vertical-align: middle;
+}
 
-<img src="images/cn1.jpg" alt="Photo of Disney World"/>
-<img src="images/cn2.jpg" alt="Photo of Disney World"/>
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
 
-<img src="images/kr1.jpg" alt="Photo of Disney World"/>
-<img src="images/kr2.jpg" alt="Photo of Disney World"/>
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
 
-<img src="images/af1.jpg" alt="Photo of Disney World"/>
-<img src="images/af2.jpg" alt="Photo of Disney World"/>
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
 
-<img src="images/ni1.jpg" alt="Photo of Disney World"/>
-<img src="images/ni2.jpg" alt="Photo of Disney World"/>
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
 
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  text-align:center;
+  width: 33.33%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<body>
+
+<h2 style="text-align:center">Slideshow Gallery</h2>
+
+<div class="container">
+  <div class="mySlides">
+    <img src="images/eiffel.jpg" style="width:100%, height:100px">
+  </div>
+
+  <div class="mySlides">
+    <img src="img_5terre_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <img src="img_mountains_wide.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <img src="img_lights_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <img src="img_nature_wide.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <img src="img_snow_wide.jpg" style="width:100%">
+  </div>
+
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="img_woods.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img_5terre.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+	<div class="column">
+      <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+  </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
   <script>
 
         function getSelectValue()
