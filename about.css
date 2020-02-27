@@ -39,3 +39,77 @@
   z-index: 2;
   cursor: pointer;
 }
+
+.img{margin-left:10%; margin-right:10%;width:80%; height:450px;}
+.smallimg{ width:280px; height:150px; }
+	
+#container {
+ width: 1000px;
+ overflow: hidden;
+}
+.photobanner {
+	height: 150px;
+	width: 3550px;
+}
+
+.photobanner img {
+	transition: all 0.5s ease;
+}
+
+.photobanner img:hover {
+	transform: scale(1.1);
+}
+.first {
+width:280px; height:150px; 
+         animation: bannermove 40s linear infinite;
+}
+ 
+@keyframes "bannermove" {
+ 0% {
+    margin-left: 0px;
+ }
+ 100% {
+    margin-left: -2125px;
+ }
+ 
+}
+ 
+@-moz-keyframes bannermove {
+ 0% {
+   margin-left: 0px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+ 
+@-webkit-keyframes "bannermove" {
+ 0% {
+   margin-left: 0px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+ 
+@-ms-keyframes "bannermove" {
+ 0% {
+   margin-left: 0px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+ 
+@-o-keyframes "bannermove" {
+ 0% {
+   margin-left: 0px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}

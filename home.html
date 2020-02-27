@@ -5,11 +5,8 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="about.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style>
-	img{margin-left:10%; margin-right:10%;width:80%; height:350px;}
-</style>
  <script>
  $(document).ready(function(){
     $(".fade1").hide();
@@ -316,13 +313,55 @@
 <div class="container-fluid">
 <div class="row>
 <div class="col">
-<img id="image" src="images/eiffel.jpg">
+<img id="image" class="img" src="images/eiffel.jpg">
+<label id="nameP" >Eiffel Tower, Paris, France </label>
 </div> 
 
 </div>
 <div class="row">
 <div class="col-12">
-<img id="image" src="images/eiffel.jpg">
+<div id="container">
+  <div class="photobanner">
+<img  class="first" src="images/eiffel.jpg">
+<img  class="smallimg" src="images/colosseum.jpg">
+<img  class="smallimg" src="images/ggb.jpg">
+<img  class="smallimg" src="images/disney.jpg">
+<img  class="smallimg" src="images/louvre.jpg">
+
+<img  class="smallimg" src="images/can1.jpg">
+<img  class="smallimg" src="images/can2.jpg">
+
+<img  class="smallimg" src="images/usa1.jpg">
+<img  class="smallimg" src="images/usa2.jpg">
+
+<img  class="smallimg" src="images/br1.jpg">
+<img  class="smallimg" src="images/br2.jpg">
+
+<img  class="smallimg" src="images/arg1.jpg">
+<img  class="smallimg" src="images/arg2.jpg">
+
+<img  class="smallimg" src="images/pan1.jpg">
+<img  class="smallimg" src="images/pan2.jpg">
+
+<img  class="smallimg" src="images/cos1.jpg">
+<img  class="smallimg" src="images/cos2.jpg">
+
+<img  class="smallimg" src="images/cn1.jpg">
+<img  class="smallimg" src="images/cn2.jpg">
+
+<img  class="smallimg" src="images/kr1.jpg">
+<img  class="smallimg" src="images/kr2.jpg">
+
+<img  class="smallimg" src="images/af1.jpg">
+<img  class="smallimg" src="images/af2.jpg">
+
+<img  class="smallimg" src="images/ni1.jpg">
+<img  class="smallimg" src="images/ni2.jpg">
+
+  </div>
+</div>
+<div class="col-2"></div>
+
 </div>
 </div>
 </div>
@@ -358,201 +397,16 @@ var imagesArr =[
 
 $('#changeImage').change(function(){
   $('#image')[0].src = imagesArr[this.value];
-});
+  });
 $('#changeImage1').change(function(){
   $('#image')[0].src = imagesArr[this.value];
 });
+
+
 </script>
 
 </div>
-<div class="col-2"></div>
-
 </div>
-</div>
-<style>
-
-* {
-  box-sizing: border-box;
-}
-
-img {
-  vertical-align: middle;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  text-align:center;
-  width: 33.33%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-</style>
-<body>
-
-<h2 style="text-align:center">Slideshow Gallery</h2>
-
-<div class="container">
-  <div class="mySlides">
-    <img src="images/eiffel.jpg" style="width:100%, height:100px">
-  </div>
-
-  <div class="mySlides">
-    <img src="img_5terre_wide.jpg" style="width:100%">
-  </div>
-
-  <div class="mySlides">
-    <img src="img_mountains_wide.jpg" style="width:100%">
-  </div>
-    
-  <div class="mySlides">
-    <img src="img_lights_wide.jpg" style="width:100%">
-  </div>
-
-  <div class="mySlides">
-    <img src="img_nature_wide.jpg" style="width:100%">
-  </div>
-    
-  <div class="mySlides">
-    <img src="img_snow_wide.jpg" style="width:100%">
-  </div>
-
-
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
-
-  <div class="row">
-    <div class="column">
-      <img class="demo cursor" src="img_woods.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="img_5terre.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-    </div>
-	<div class="column">
-      <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-    </div>
-  </div>
-</div>
-
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
-</script>
-    
-  <script>
-
-        function getSelectValue()
-        {
-            var selectedValue = document.getElementById('country').value;
-            console.log(selectedValue);
-        }
-        getSelectValue();
-
-    </script>
 
 
 
