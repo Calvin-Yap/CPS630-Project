@@ -4,8 +4,8 @@
   <title>Assignment 1 Iteration 1</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="about.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 	img{width:300px; height:auto;}
@@ -35,8 +35,46 @@
  </script>
 
   </head>
-
+<!-- overlay for about us and contact us-->
 <body>
+  <div id="overlay" onclick="off()">
+    <div class="square">
+      <p><span style="font-size:25px;">About Us</span></p>
+      <p>
+        Calvin Yap
+        <br>Computer Science Student at Ryerson
+      </p>
+      <p>
+        Nicky Dam
+        <br>Computer Science Student at Ryerson
+      </p>
+      <p>
+        Anderson Luan
+        <br>Computer Science Student at Ryerson
+      </p>
+      </div>
+    </div>
+
+
+  <div id="overlayContact" onclick="offContact()">
+    <div class="square">
+      <p><span style="font-size:25px;">Contact Us</span></p>
+      <p>
+        Calvin Yap
+        <br>email
+      </p>
+      <p>
+        Nicky Dam
+        <br>t1dam@ryerson.ca
+      </p>
+      <p>
+        Anderson Luan
+        <br>email
+      </p>
+      </div>
+    </div>
+  </div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <h1 class="navbar-brand" >Plan Your Travel</h1>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,10 +86,10 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" onclick="on()" href="#">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
+        <a class="nav-link" onclick="onContact()" href="#">Contact Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Shopping Cart</a>
@@ -59,6 +97,21 @@
     </ul>
   </div>
 </nav>
+
+<script>
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+  function onContact() {
+    document.getElementById("overlayContact").style.display = "block";
+  }
+  function offContact() {
+    document.getElementById("overlayContact").style.display = "none";
+  }
+</script>
 
 <caption>Continents</caption>
  <select name="continents" id="fade"  >
@@ -222,13 +275,13 @@
 	  });
  </script>
  </select>
- 
+
 <img src="images/eiffel.jpg" alt="Photo of the Eiffel Tower"/>
 <img src="images/colosseum.jpg" alt="Photo of the Rome Colosseum"/>
 <img src="images/louvre.jpg" alt="Photo of the Louvre"/>
 <img src="images/ggb.jpg" alt="Photo of the Golden Gate Bridge"/>
 <img src="images/disney.jpg" alt="Photo of Disney World"/>
- 
+
 <img src="images/can1.jpg" alt="Photo of Disney World"/>
 <img src="images/can2.jpg" alt="Photo of Disney World"/>
 
@@ -260,7 +313,7 @@
 <img src="images/ni2.jpg" alt="Photo of Disney World"/>
 
   <script>
-        
+
         function getSelectValue()
         {
             var selectedValue = document.getElementById('country').value;
@@ -269,6 +322,9 @@
         getSelectValue();
 
     </script>
+
+
+
 
 </body>
 </html>
