@@ -1,0 +1,32 @@
+.bold {
+  font-weight: bold;
+}
+ul  {
+    list-style:none;
+     margin:0; padding:0;
+     font-weight: bold;
+}
+#NorthAmerica, #flip {
+  margin: auto;
+}
+#NorthAmerica{
+  display: none;
+}
+#SouthAmerica, #flip2 {
+  margin: auto;
+}
+#SouthAmerica{
+  display: none;
+}
+#CentralAmerica, #flip2 {
+  margin: auto;
+}
+#CentralAmerica{
+  display: none;
+}
+#Asia, #flip2 {
+  margin: auto;
+}
+#Asia {
+  display: none;
+}
