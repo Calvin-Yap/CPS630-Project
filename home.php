@@ -30,6 +30,54 @@
     });
 });
  </script>
+<?php
+include('travel-photo-class.php');
+
+$continents = array("North America","South America","Central America","Asia","Africa");
+
+$countries = array();
+$countries["CA"] = "Canada";
+$countries["US"] = "USA";
+$countries["BR"] = "Brazil";
+$countries["AR"] = "Argentina";
+$countries["PA"] = "Panama";
+$countries["CR"] = "Costa Rica";
+$countries["CN"] = "China";
+$countries["KR"] = "Korea";
+$countries["SA"] = "South Africa";
+$countries["NI"] = "Nigeria";
+
+
+
+
+$images = array();
+$images [] = new TravelPhoto("images/eiffel.jpg", "Eiffel Tower","  ", 0,0);
+$images [] = new TravelPhoto("images/colosseum.jpg", "The Colosseum","  ", 0,0);
+$images [] = new TravelPhoto("images/louvre.jpg", "The Louvre","  ", 0,0);
+$images [] = new TravelPhoto("images/ggb.jpg", "The Golden Gate Bridge","  ", 0,0);
+$images [] = new TravelPhoto("images/disney.jpg", "Dinsey World","  ", 0,0);
+$images [] = new TravelPhoto("images/can1.jpg", "CN Tower","  ", 0,0);
+$images [] = new TravelPhoto("images/can2.jpg", "Banff National Park","  ", 0,0);
+$images [] = new TravelPhoto("images/usa1.jpg", "Statue of Liberty","  ", 0,0);
+$images [] = new TravelPhoto("images/usa2.jpg", "Grand Canyon","  ", 0,0);
+$images [] = new TravelPhoto("images/br1.jpg", "Christ the Redeemer","  ", 0,0);
+$images [] = new TravelPhoto("images/br2.jpg", "Sugarloaf Moutain","  ", 0,0);
+$images [] = new TravelPhoto("images/arg1.jpg", "Perito Moreno Glacier","  ", 0,0);
+$images [] = new TravelPhoto("images/arg2.jpg", "La Boca","  ", 0,0);
+$images [] = new TravelPhoto("images/pan1.jpg", "Gatun Lake","  ", 0,0);
+$images [] = new TravelPhoto("images/pan2.jpg", "San Blas Island","  ", 0,0);
+$images [] = new TravelPhoto("images/cos1.jpg", "Areal Volcano","  ", 0,0);
+$images [] = new TravelPhoto("images/cos2.jpg", "Parque Nacional Manuel Antonio","  ", 0,0);
+$images [] = new TravelPhoto("images/cn1.jpg", "Great Wall of China","  ", 0,0);
+$images [] = new TravelPhoto("images/cn2.jpg", "The Forbidden City","  ", 0,0);
+$images [] = new TravelPhoto("images/kr1.jpg", "N Seoul Tower","  ", 0,0);
+$images [] = new TravelPhoto("images/kr2.jpg", "Gyeongbokgung Palace","  ", 0,0);
+$images [] = new TravelPhoto("images/af1.jpg", "Cape of Good Hope","  ", 0,0);
+$images [] = new TravelPhoto("images/af2.jpg", "kruger National Park","  ", 0,0);
+$images [] = new TravelPhoto("images/ni2.jpg", "Zuma Rock","  ", 0,0);
+$images [] = new TravelPhoto("images/ni1.jpg", "Yankari National Park","  ", 0,0);
+
+?>
 
   </head>
 <!-- overlay for about us and contact us-->
@@ -159,7 +207,7 @@
           value: "Panama",
           desc: "Panama"
         }, {
-          value: "Coasta Rica",
+          value: "Rica",
           desc: "Coasta Rica"
         }],
         "p4": [{
@@ -243,7 +291,7 @@
           value: "14",
           desc: "San Blas Island"
         }],
-		 "Costa Rica": [{
+		"Rica": [{
 		value: "0",
 		desc:"Select an Attraction"
 		},{
@@ -296,13 +344,14 @@
 		}
 		document.getElementsByName('country')[0].addEventListener('change', function(e) {
         document.getElementsByName('attraction')[0].innerHTML = attractions[this.value].reduce((acc, elem) => `${acc}<option value="${elem.value}">${elem.desc}</option>`, "");
-	  });
+
+	 });
  </script>
  </select>
  <br>
 <caption>Popular Places </caption>
  <select id="changeImage1">
-            <option value ="-1">Popular Places</option>
+            <option value ="0">Popular Places</option>
             <option value ="0" selected>Eiffel Tower, Paris, France</option>
             <option value ="1">Colosseum, Rome, Italy</option>
             <option value ="2">Louvre Museum, Paris, France</option>
@@ -314,7 +363,8 @@
 <div class="row>
 <div class="col">
 <img id="image" class="img" src="images/eiffel.jpg">
-<label id="nameP" >Eiffel Tower, Paris, France </label>
+<label class="read" id="nameP" >Eiffel Tower</label>
+
 </div> 
 
 </div>
@@ -361,7 +411,6 @@
   </div>
 </div>
 <div class="col-2"></div>
-
 </div>
 </div>
 </div>
@@ -394,19 +443,49 @@ var imagesArr =[
 	"images/ni1.jpg",
 	"images/ni2.jpg"	
 	];
-
+var namesArr =[
+	"<?php echo $images[0]->__getTitle();?>",
+	"<?php echo $images[1]->__getTitle();?>",
+	"<?php echo $images[2]->__getTitle();?>",
+	"<?php echo $images[3]->__getTitle();?>",
+	"<?php echo $images[4]->__getTitle();?>",
+	"<?php echo $images[5]->__getTitle();?>",
+	"<?php echo $images[6]->__getTitle();?>",
+	"<?php echo $images[7]->__getTitle();?>",
+	"<?php echo $images[8]->__getTitle();?>",
+	"<?php echo $images[9]->__getTitle();?>",
+	"<?php echo $images[10]->__getTitle();?>",
+	"<?php echo $images[11]->__getTitle();?>",
+	"<?php echo $images[12]->__getTitle();?>",
+	"<?php echo $images[13]->__getTitle();?>",
+	"<?php echo $images[14]->__getTitle();?>",
+	"<?php echo $images[15]->__getTitle();?>",
+	"<?php echo $images[16]->__getTitle();?>",
+	"<?php echo $images[17]->__getTitle();?>",
+	"<?php echo $images[18]->__getTitle();?>",
+	"<?php echo $images[19]->__getTitle();?>",
+	"<?php echo $images[20]->__getTitle();?>",
+	"<?php echo $images[21]->__getTitle();?>",
+	"<?php echo $images[22]->__getTitle();?>",
+	"<?php echo $images[23]->__getTitle();?>",
+	"<?php echo $images[24]->__getTitle();?>",
+	];
 $('#changeImage').change(function(){
   $('#image')[0].src = imagesArr[this.value];
+    document.getElementById('nameP').innerHTML =namesArr[this.value];
   });
 $('#changeImage1').change(function(){
   $('#image')[0].src = imagesArr[this.value];
+  document.getElementById('nameP').innerHTML =namesArr[this.value];
 });
 
-
 </script>
+<?php echo $images[0]->__getfile();?>
 
 </div>
 </div>
+
+
 
 
 
