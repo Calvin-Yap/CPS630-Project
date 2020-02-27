@@ -3,15 +3,19 @@
 <head>
   <title>Assignment 1 Iteration 1</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+	img{width:300px; height:auto;}
+</style>
  <script>
  $(document).ready(function(){
     $(".fade1").hide();
 	$(".cap").hide();
 
-    $(".fade").change(function(){
+    $("#fade").change(function(){
 		$(".cap").fadeIn();
         $(".fade1").fadeIn();
 		$(".cap2").fadeOut();
@@ -33,15 +37,31 @@
   </head>
 
 <body>
-<table>
-<tr>
-<th><h1>Home</h1></th>
-<th><h1>About Us</h1></th>
-<th><h1>Contact Us</h1></th>
-<th><h1>Shopping Cart</h1></th>
-</table>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1 class="navbar-brand" >Plan Your Travel</h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Shopping Cart</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <caption>Continents</caption>
- <select name="continents" id="continents" class="fade" >
+ <select name="continents" id="fade"  >
 			<option value ="0">Select a Continent</option>
             <option value ="p1">North America</option>
             <option value ="p2">South America</option>
@@ -127,8 +147,8 @@
 <script>
 	 let attractions = {
         "Canada": [{
-          value: "Ryerson Univeristy",
-          desc: "Ryerson Univeristy"
+          value: "CN Tower",
+          desc: "CN Tower"
         }, {
           value: "Banff National Park",
           desc: "Banff National Park"
@@ -162,8 +182,8 @@
           desc: "San Blas Island"
         }],
 		 "Costa Rica": [{
-          value: "Arenal Vocano",
-          desc: "Areal Vocano"
+          value: "Arenal Volcano",
+          desc: "Areal Volcano"
         }, {
           value: "Parque Nacional Manuel Antonio",
           desc: "Parque Nacional Manuel Antonio"
@@ -203,8 +223,42 @@
  </script>
  </select>
  
-
+<img src="images/eiffel.jpg" alt="Photo of the Eiffel Tower"/>
+<img src="images/colosseum.jpg" alt="Photo of the Rome Colosseum"/>
+<img src="images/louvre.jpg" alt="Photo of the Louvre"/>
+<img src="images/ggb.jpg" alt="Photo of the Golden Gate Bridge"/>
+<img src="images/disney.jpg" alt="Photo of Disney World"/>
  
+<img src="images/can1.jpg" alt="Photo of Disney World"/>
+<img src="images/can2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/usa1.jpg" alt="Photo of Disney World"/>
+<img src="images/usa2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/br1.jpg" alt="Photo of Disney World"/>
+<img src="images/br2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/arg1.jpg" alt="Photo of Disney World"/>
+<img src="images/arg2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/pan1.jpg" alt="Photo of Disney World"/>
+<img src="images/pan2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/cos1.jpg" alt="Photo of Disney World"/>
+<img src="images/cos2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/cn1.jpg" alt="Photo of Disney World"/>
+<img src="images/cn2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/kr1.jpg" alt="Photo of Disney World"/>
+<img src="images/kr2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/af1.jpg" alt="Photo of Disney World"/>
+<img src="images/af2.jpg" alt="Photo of Disney World"/>
+
+<img src="images/ni1.jpg" alt="Photo of Disney World"/>
+<img src="images/ni2.jpg" alt="Photo of Disney World"/>
+
   <script>
         
         function getSelectValue()
@@ -215,5 +269,6 @@
         getSelectValue();
 
     </script>
+
 </body>
 </html>
