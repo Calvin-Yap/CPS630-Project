@@ -27,13 +27,12 @@ class TravelPhoto
    }    
    
    public function __getFile(){
-        return $this->fileName;
-   }
-     public function __getTitle(){
-        return $this->title;
+	   return $this-> fileName;
    }
     
-	
+   public function __getTitle(){
+	   return $this-> title;
+   }
    public function __toString() {
       $tag = '<a href="detail.php?id=' . $this->ID . '" class="img-responsive">';
       $tag .= '<img src="' . $this->fileName . '" title="' . $this->title . '" alt="' . $this->title . '" >';   

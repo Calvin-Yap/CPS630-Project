@@ -31,51 +31,7 @@
 });
  </script>
 <?php
-include('travel-photo-class.php');
-
-$continents = array("North America","South America","Central America","Asia","Africa");
-
-$countries = array();
-$countries["CA"] = "Canada";
-$countries["US"] = "USA";
-$countries["BR"] = "Brazil";
-$countries["AR"] = "Argentina";
-$countries["PA"] = "Panama";
-$countries["CR"] = "Costa Rica";
-$countries["CN"] = "China";
-$countries["KR"] = "Korea";
-$countries["SA"] = "South Africa";
-$countries["NI"] = "Nigeria";
-
-
-
-
-$images = array();
-$images [] = new TravelPhoto("images/eiffel.jpg", "Eiffel Tower","  ", 0,0);
-$images [] = new TravelPhoto("images/colosseum.jpg", "The Colosseum","  ", 0,0);
-$images [] = new TravelPhoto("images/louvre.jpg", "The Louvre","  ", 0,0);
-$images [] = new TravelPhoto("images/ggb.jpg", "The Golden Gate Bridge","  ", 0,0);
-$images [] = new TravelPhoto("images/disney.jpg", "Dinsey World","  ", 0,0);
-$images [] = new TravelPhoto("images/can1.jpg", "CN Tower","  ", 0,0);
-$images [] = new TravelPhoto("images/can2.jpg", "Banff National Park","  ", 0,0);
-$images [] = new TravelPhoto("images/usa1.jpg", "Statue of Liberty","  ", 0,0);
-$images [] = new TravelPhoto("images/usa2.jpg", "Grand Canyon","  ", 0,0);
-$images [] = new TravelPhoto("images/br1.jpg", "Christ the Redeemer","  ", 0,0);
-$images [] = new TravelPhoto("images/br2.jpg", "Sugarloaf Moutain","  ", 0,0);
-$images [] = new TravelPhoto("images/arg1.jpg", "Perito Moreno Glacier","  ", 0,0);
-$images [] = new TravelPhoto("images/arg2.jpg", "La Boca","  ", 0,0);
-$images [] = new TravelPhoto("images/pan1.jpg", "Gatun Lake","  ", 0,0);
-$images [] = new TravelPhoto("images/pan2.jpg", "San Blas Island","  ", 0,0);
-$images [] = new TravelPhoto("images/cos1.jpg", "Areal Volcano","  ", 0,0);
-$images [] = new TravelPhoto("images/cos2.jpg", "Parque Nacional Manuel Antonio","  ", 0,0);
-$images [] = new TravelPhoto("images/cn1.jpg", "Great Wall of China","  ", 0,0);
-$images [] = new TravelPhoto("images/cn2.jpg", "The Forbidden City","  ", 0,0);
-$images [] = new TravelPhoto("images/kr1.jpg", "N Seoul Tower","  ", 0,0);
-$images [] = new TravelPhoto("images/kr2.jpg", "Gyeongbokgung Palace","  ", 0,0);
-$images [] = new TravelPhoto("images/af1.jpg", "Cape of Good Hope","  ", 0,0);
-$images [] = new TravelPhoto("images/af2.jpg", "kruger National Park","  ", 0,0);
-$images [] = new TravelPhoto("images/ni2.jpg", "Zuma Rock","  ", 0,0);
-$images [] = new TravelPhoto("images/ni1.jpg", "Yankari National Park","  ", 0,0);
+include('travel-data.php');
 
 ?>
 
@@ -363,8 +319,13 @@ $images [] = new TravelPhoto("images/ni1.jpg", "Yankari National Park","  ", 0,0
 <div class="row>
 <div class="col">
 <img id="image" class="img" src="images/eiffel.jpg">
-<label class="read" id="nameP" >Eiffel Tower</label>
+<label class="read" id="nameP" >Eiffel Tower, Paris, France</label>
 
+<form action="readmore.php" method="get">
+<input type="hidden" id="setThis" name="setThis" value="Eiffel Tower, Paris, France">
+<input type="hidden" id="index" name="index" value="0">
+<input type="submit" value="Read More">
+</form>
 </div> 
 
 </div>
@@ -372,7 +333,9 @@ $images [] = new TravelPhoto("images/ni1.jpg", "Yankari National Park","  ", 0,0
 <div class="col-12">
 <div id="container">
   <div class="photobanner">
-<img  class="first" src="images/eiffel.jpg">
+<a href="readmore.php">
+  <img  class="first" src="images/eiffel.jpg">
+</a>
 <img  class="smallimg" src="images/colosseum.jpg">
 <img  class="smallimg" src="images/ggb.jpg">
 <img  class="smallimg" src="images/disney.jpg">
@@ -473,15 +436,19 @@ var namesArr =[
 $('#changeImage').change(function(){
   $('#image')[0].src = imagesArr[this.value];
     document.getElementById('nameP').innerHTML =namesArr[this.value];
+	document.getElementById('setThis').value =namesArr[this.value];
+    document.getElementById('index').value =this.value;
+
   });
 $('#changeImage1').change(function(){
   $('#image')[0].src = imagesArr[this.value];
   document.getElementById('nameP').innerHTML =namesArr[this.value];
+  document.getElementById('setThis').value =namesArr[this.value];
+  document.getElementById('index').value =this.value;
+
 });
 
 </script>
-<?php echo $images[0]->__getfile();?>
-
 </div>
 </div>
 
