@@ -27,6 +27,25 @@ if ( isset( $_SESSION['user_id'] ) )
 ?>
 </head>
 <body>
+<style>
+.navLink{
+	text-decoration:none;
+	font-size:150%;
+	padding:20px;}
+.brand{
+	font-weight:bold;
+	padding-left:20px;
+}
+</style>
+<nav>
+<div class="navCon">
+		<h1 class="brand" >Plan Your Travel</h1>
+	<ul>
+        <li><a class="navLink" href="home.php">Home</a></li>
+        <li><a class="navLink" href="logout-request.php">Log Out</a></li>
+	</ul>
+</div>
+</nav>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6" id="abcd">
