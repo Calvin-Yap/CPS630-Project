@@ -222,7 +222,7 @@ include('travel-data.php');
 }
 .imgr{
 	width:100%;
-	height:auto;
+	height:350px;
 }
 .text{
 	font-size:100%;
@@ -249,6 +249,8 @@ include('travel-data.php');
 <div class="col-4">
 <h1>Name: Robert Smith</h1>
 <h1>Rating: ⭐⭐⭐⭐⭐</h1>
+<h3>Date:02/20/20</h3>
+<h3>Time:12:13pm</h3>
 </div>
 <div class="col-8">
 <p>This attraction was incredibly beautiful, I would love to go to <?php echo $Place ?> again!</p>
@@ -260,7 +262,9 @@ include('travel-data.php');
 <div class="row">
 <div class="col-4">
 <h1>Name: Alex Fu</h1>
-<h1>Rating: ⭐⭐⭐</h1>
+<h1>Rating: ⭐⭐</h1>
+<h3>Date:02/1/20</h3>
+<h3>Time:8:13pm</h3>
 </div>
 <div class="col-8">
 <p>This place is trash! Overpriced! Will not be bringing my 6 kids here again! I hate <?php echo $Place ?></p>
