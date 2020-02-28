@@ -35,3 +35,19 @@ ul  {
     max-height: 200px;
     overflow-x: hidden;
 }
+.row{
+  display: table;
+  background-color: lightblue;
+
+}
+.container-fluid{
+  background-color: lightblue;
+
+}
+[class *= "col-" ]{
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+  background-color: lightblue;
+  
+}
