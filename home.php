@@ -110,6 +110,9 @@ include('travel-data.php');
         <a class="nav-link" href="shoppingCart.php">Shopping Cart</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="lab3-Team9.php">db Maintain</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="logout-request.php">Log Out</a>
       </li>
     </ul>
