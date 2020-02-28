@@ -12,6 +12,17 @@
  text-align: center;
 }
 
+.square1{
+ position: absolute;
+ top:100px;
+ width: 100%;
+ height: auto;
+ padding: 10px;
+ padding:5px;
+ text-align: center;
+	
+}
+
 #overlay{
   position: fixed;
   display: none;
@@ -40,6 +51,19 @@
   cursor: pointer;
 }
 
+#overlaySearch{
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.7);
+  z-index: 2;
+  cursor: pointer;
+}
 .img{margin-left:10%; margin-right:10%;width:80%; height:450px; margin-top:10px; border:2px solid black;}
 .smallimg{ width:280px; height:150px; }
 	

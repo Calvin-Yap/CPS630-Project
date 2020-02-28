@@ -88,8 +88,44 @@ include('travel-data.php');
       </p>
       </div>
     </div>
-  </div>
+<script>
+function gone() {
+  var x = document.getElementById("overlaySearch");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+	<div id="overlaySearch" >
+  <div class="square1">
+    <h2>Search</h2>
+	<button onClick="gone()">Back</button>
+<input type="text" id="input" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<ul id="myUL">
+  <li><a href="shoppingCart.php">Canada</a></li>
+  <li><a href="shoppingCart.php">USA</a></li>
+  <li><a href="shoppingCart.php">Brazil</a></li>
+  <li><a href="shoppingCart.php">Argentina</a></li>
+  <li><a href="shoppingCart.php">Panama</a></li>
+  <li><a href="shoppingCart.php">Costa Rica</a></li>
+  <li><a href="shoppingCart.php">China</a></li>
+  <li><a href="shoppingCart.php">Korea</a></li>
+  <li><a href="shoppingCart.php">South Afica</a></li>
+  <li><a href="shoppingCart.php">Nigeria</a></li>
+  <li><a href="shoppingCart.php">China</a></li>
+   <li><a href="readmore.php?setThis=Eiffel+Tower%2C+Paris%2C+France&index=0">Eiffel Tower</a></li>
+  <li><a href="readmore.php?setThis=The+Golden+Gate+Bridge%2C+California%2C+USA&index=3">Golden Gate Bridge</a></li>
+  <li><a href="readmore.php?setThis=CN+Tower%2C+Ontario%2C+Canada&index=5">CN Tower</a></li>
+  <li><a href="readmore.php?setThis=The+Louvre%2C+Paris%2C+France&index=2">The Louvre</a></li>
+  <li><a href="readmore.php?setThis=Grand+Canyon%2C+Nevada%2C+USA&index=8">Grand Canyon</a></li>
+  <li><a href="readmore.php?setThis=The+Colosseum%2C+Rome%2C+Italy&index=1">The Colosseum</a></li>
+  <li><a href="readmore.php?setThis=Zuma+Rock%2C+Niger+State%2C+Nigeria%2C&index=23">Zuma Rock</a></li>
 
+</ul>
+</div>
+  </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <h1 class="navbar-brand" >Plan Your Travel</h1>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +134,7 @@ include('travel-data.php');
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" onclick="on()" href="#">About Us</a>
@@ -114,6 +150,9 @@ include('travel-data.php');
       </li>
       <li class="nav-item">
         <a class="nav-link" href="logout-request.php">Log Out</a>
+      </li>
+		<li class="nav-item">
+        <a class="nav-link" onclick="gone()" href="#">Search</a>
       </li>
     </ul>
   </div>
@@ -354,7 +393,7 @@ include('travel-data.php');
 <div class="col-12">
 <div id="container">
   <div class="photobanner">
-<a href="readmore.php">
+<a href="readmore.php?setThis=Eiffel+Tower%2C+Paris%2C+France&index=0">
   <img  class="first" src="images/eiffel.jpg">
 </a>
 <img  class="smallimg" src="images/colosseum.jpg">
@@ -507,7 +546,55 @@ $('#changeImage1').change(function(){
 </div>
 </div>
 </div>
+<style>
 
+
+#input {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+</style>
+
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("input");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 <br>
 
