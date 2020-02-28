@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-.img{margin-left:10%; margin-right:10%;width:80%; height:450px;}
+.img{margin-left:10%; margin-right:10%;width:80%; height:450px; margin-top:10px; border:2px solid black;}
 .smallimg{ width:280px; height:150px; }
 	
 #container {
@@ -53,7 +53,7 @@
 }
 
 .photobanner img {
-	transition: all 0.5s ease;
+	transition: all 1s ease;
 }
 
 .photobanner img:hover {
@@ -61,7 +61,7 @@
 }
 .first {
 width:280px; height:150px; 
-         animation: bannermove 40s linear infinite;
+         animation: bannermove 110s linear infinite;
 }
  
 @keyframes "bannermove" {
@@ -69,7 +69,7 @@ width:280px; height:150px;
     margin-left: 0px;
  }
  100% {
-    margin-left: -2125px;
+    margin-left: -5000px;
  }
  
 }
@@ -79,7 +79,7 @@ width:280px; height:150px;
    margin-left: 0px;
  }
  100% {
-   margin-left: -2125px;
+   margin-left: -5000px;
  }
  
 }
@@ -89,7 +89,7 @@ width:280px; height:150px;
    margin-left: 0px;
  }
  100% {
-   margin-left: -2125px;
+   margin-left: -5000px;
  }
  
 }
@@ -99,7 +99,7 @@ width:280px; height:150px;
    margin-left: 0px;
  }
  100% {
-   margin-left: -2125px;
+   margin-left: -5000px;
  }
  
 }
@@ -109,7 +109,7 @@ width:280px; height:150px;
    margin-left: 0px;
  }
  100% {
-   margin-left: -2125px;
+   margin-left: -5000px;
  }
  
 }
@@ -119,6 +119,13 @@ width:280px; height:150px;
 	font-weight:bold;
 	background-color:black;
 	color:white;	
-	margin-left:10%; margin-right:10%;width:80%
+	margin-left:10%; margin-right:10%;width:80%;
 }
+
+.title{
+	text-align:center;
+	font-size:200%;
+	padding:10px;
+}
+
 

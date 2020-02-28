@@ -18,7 +18,7 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6" style="background-color: white;">
+      <div class="col-md-6" style="background-color: lightblue;">
         <h1> Travel Plans </h1>
         <button type="button" class="btn btn-info" id= "flip" onclick="myTravelNA()">Travel in North America</button>
         <button type="button" class="btn btn-info" id= "flip2" onclick="myTravelSA()">Travel in South America</button>
@@ -46,6 +46,7 @@
             </ul>
           </div>
         </div>
+
         <div id="SouthAmerica">
           <p class="bold">Start Date:</p>
           <p>Saturday, February 29th, 2020</p>
@@ -54,11 +55,11 @@
           <p class="bold">Total Duration:</p>
           <p>7 days </p>
           <p class="bold">Air Fare/Cruise Fare:</p>
-          <p>$5000 </p>
+          <p>$7000 </p>
           <p class="bold">Tour ID Number:</p>
-          <p>100</p>
+          <p>200</p>
           <p class="bold">Total Price:</p>
-          <p>$10000</p>
+          <p>$12000</p>
           <div id="destination">
             <ul>
                <li>Destination 1: Christ the Redeemer, Brazil</li>
@@ -67,6 +68,7 @@
             </ul>
           </div>
         </div>
+
         <div id="CentralAmerica">
           <p class="bold">Start Date:</p>
           <p>Saturday, February 29th, 2020</p>
@@ -75,16 +77,16 @@
           <p class="bold">Total Duration:</p>
           <p>7 days </p>
           <p class="bold">Air Fare/Cruise Fare:</p>
-          <p>$5000 </p>
+          <p>$3000 </p>
           <p class="bold">Tour ID Number:</p>
           <p>100</p>
           <p class="bold">Total Price:</p>
-          <p>$10000</p>
+          <p>$13000</p>
           <div id="destination">
             <ul>
-               <li>Destination 1: CN Tower, Canada</li>
-               <li>Destination 2: Banff National Park, Canada</li>
-               <li>Destination 3: Statue of Liberty, USA</li>
+               <li>Destination 1: Gatun Lake, Panama </li>
+               <li>Destination 2: San Blas Islands, Panama </li>
+               <li>Destination 3: Arenal Volcano, Costa Rica</li>
             </ul>
           </div>
         </div>
@@ -96,65 +98,103 @@
           <p class="bold">Total Duration:</p>
           <p>7 days </p>
           <p class="bold">Air Fare/Cruise Fare:</p>
-          <p>$5000 </p>
+          <p>$7000 </p>
           <p class="bold">Tour ID Number:</p>
           <p>100</p>
           <p class="bold">Total Price:</p>
-          <p>$10000</p>
+          <p>$15000</p>
           <div id="destination">
             <ul>
-               <li>Destination 1: CN Tower, Canada</li>
-               <li>Destination 2: Banff National Park, Canada</li>
-               <li>Destination 3: Statue of Liberty, USA</li>
+               <li>Destination 1: Great Wall of China, China</li>
+               <li>Destination 2: N Seol Tower, Korea</li>
+               <li>Destination 3: Gyeonbokgung Palace, Korea</li>
             </ul>
           </div>
         </div>
       </div>
       <script>
         var name;
+        var defined = 0;
+        var x;
         function myTravelNA() {
-          var x = document.getElementById("NorthAmerica");
-          if (x.style.display === "none") {
+          if( defined == 0){
+           x = document.getElementById("NorthAmerica");
             x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-          name = "NA";
-          initMap();
+          defined = 1;
+        }
+        else {
+           x.style.display = "none";
+           x = document.getElementById("NorthAmerica");
+            x.style.display = "block";
+        }
+        name = "NA";
+        initMap();
+        printCost("$12,000.00");
         }
         function myTravelSA() {
-          var x = document.getElementById("SouthAmerica");
-          if (x.style.display === "none") {
+          if( defined == 0){
+           x = document.getElementById("SouthAmerica");
             x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-          name = "SA"
-          initMap();
+
+          defined = 1;
+        }
+        else {
+           x.style.display = "none";
+           x = document.getElementById("SouthAmerica");
+        //  if (x.style.display === "none") {
+            x.style.display = "block";
+        }
+        name = "SA";
+        initMap();
+        printCost("$13,000.00");
         }
         function myTravelCA() {
-          var x = document.getElementById("CentralAmerica");
-          if (x.style.display === "none") {
+          if( defined == 0){
+           x = document.getElementById("CentralAmerica");
+        //  if (x.style.display === "none") {
             x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-          name = "CA"
-          initMap();
 
+          defined = 1;
+        }
+        else {
+           x.style.display = "none";
+           x = document.getElementById("CentralAmerica");
+        //  if (x.style.display === "none") {
+            x.style.display = "block";
+        }
+        name = "CA";
+        initMap();
+        printCost("$15,000.00");
         }
         function myTravelA() {
-          var x = document.getElementById("Asia");
-          if (x.style.display === "none") {
+          if( defined == 0){
+           x = document.getElementById("Asia");
+        //  if (x.style.display === "none") {
             x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-          name = "Asia"
-          initMap();
+
+          defined = 1;
+        }
+        else {
+           x.style.display = "none";
+           x = document.getElementById("Asia");
+        //  if (x.style.display === "none") {
+            x.style.display = "block";
+        }
+        name = "Asia";
+        initMap();
+        printCost("$20,000.00");
+        }
+
+        function printCost(price){
+          var selectage = document.getElementById("Cost");
+          var contents = price;
+
+          selectage.innerHTML = contents;
 
         }
-        function initMap() {
+
+
+function initMap() {
 
 //var location = "NA";
 switch(name){
@@ -242,29 +282,50 @@ marker3.addListener('mouseover', function() {
 marker3.addListener('mouseout', function() {
   infowindow3.close();
 });
+
+
 }
+
+function addVal(a){
+var selectage = document.getElementById("age");
+var contents = "<label for=\"Age\">Select Age:</label>"
+for(let i =0; i<a; i++){
+  contents += "<select><option name=\"age\" value=\"Infant\">Infant (0 - 2)</option><option value=\"Child\">Child (2 - 11)</option><option value=\"Youth\">Youth (12 - 25)</option><option value=\"Adult\">Adult (26 - 59)</option><option value=\"Senior\">Senior (60+)</option></select>";
+}
+selectage.innerHTML = contents;
+}
+
       </script>
     <script async defer
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACWTlnsvRfilkzCbmEn7-TsVUvdWZtoHg&callback=initMap">
           </script>
 
       <div class="col-md-6" style="background-color:lightblue;">
-        <form>
+        <form action="" method="get">
+
           <h1>Order Information</h1>
           <h4>Number of Travelers</h4>
-          <input class="form-check-input" type="radio" name="traveler1" id="exampleRadios1" value="1" required>
+          <input class="form-check-input" type="radio" name="traveler"onclick="addVal(1)" id="traveler1" value="1" required>
           <label class="form-check-label" for="exampleRadios1">1</label>
-          <input class="form-check-input" type="radio" name="traveler2" id="exampleRadios1" value="2">
+          <input class="form-check-input" type="radio" name="traveler" onclick="addVal(2)"id="traveler2" value="2">
           <label class="form-check-label" for="exampleRadios1">2</label>
-          <input class="form-check-input" type="radio" name="traveler3" id="exampleRadios1" value="3">
+          <input class="form-check-input" type="radio" name="traveler" onclick="addVal(3)"id="traveler3" value="3">
           <label class="form-check-label" for="exampleRadios1">3</label>
-          <input class="form-check-input" type="radio" name="traveler4" id="exampleRadios1" value="4">
+          <input class="form-check-input" type="radio" name="traveler" onclick="addVal(4)"id="traveler4" value="4">
           <label class="form-check-label" for="exampleRadios1">4</label>
           <br>
+          <div id="age"></div>
+          <h4> Total Price with Tax: </h4>
+          <p id="Cost" style="font-size: 20px">$0.00</p>
 
-
-          <button type="submit" button type="button" class="btn btn-info">Submit</button>
+          <input type="submit" button type="button" class="btn btn-info"></input>
         </form>
+
+        <?php
+          echo $_GET['traveler'];
+          echo $_GET['age'];
+        ?>
+
       </div>
       <div id="map"></div>
 </body>
