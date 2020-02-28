@@ -9,6 +9,28 @@
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  <script>
+   
+   <?php
+
+// Put this code at the top of any page to be "protected"
+
+// start first
+session_start();
+
+if ( isset( $_SESSION['user_id'] ) ) 
+ {
+
+    // Get user data from the database using the user_id
+    // Let access only to "logged in" pages
+   echo "Hello ".$_SESSION['user_id'];
+  } 
+   else 
+  {
+
+    // Redirect to the login page
+    header("Location: http://localhost:8080/login-request.php");
+ }
+?>
  $(document).ready(function(){
     $(".fade1").hide();
 	$(".cap").hide();
@@ -71,7 +93,7 @@ include('travel-data.php');
       </p>
       <p>
         Anderson Luan
-        <br>email
+        <br>dluan@ryerson.ca
       </p>
       </div>
     </div>
@@ -95,6 +117,9 @@ include('travel-data.php');
       </li>
       <li class="nav-item">
         <a class="nav-link" href="shoppingCart.php">Shopping Cart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout-request.php">Log Out</a>
       </li>
     </ul>
   </div>

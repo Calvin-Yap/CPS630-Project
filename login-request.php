@@ -21,12 +21,7 @@ if ( ! empty( $_POST ) )
 {
     if ( isset( $_POST['username'] ) && isset( $_POST['password'] ) ) 
    {
-        if($_POST['username'] == 'admin' && $_POST['password']){
-            $_SESSION['user_id'] = 'Admin';
-            header("Location: http://localhost/homepage.php");
-        }
-
-        $con = new mysqli('localhost', 'root', 'password', 'mysql');
+        $con = new mysqli('localhost', 'root', '', 'cps630');
         $stmt = $con->prepare("SELECT * FROM userlogin WHERE Username = ? ");
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
@@ -39,7 +34,7 @@ if ( ! empty( $_POST ) )
     	if ( password_verify( $_POST['password'], $hash ) ) 
                 {
             $_SESSION['user_id'] = $user->Username;
-            header("Location: http://localhost/homepage.php");
+            header("Location: http://localhost:8080/home.php");
         }
         else{
             echo "Invalid Password";
