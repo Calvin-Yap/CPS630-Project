@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php
+   /*
+session_start();
+if ( isset( $_SESSION['user_id'] ) ) 
+ {
+  } 
+   else 
+  {
+    header("Location: http://localhost:8080/login-request.php");
+ }
+ */
+?>
  <title>Assignment 1 Iteration 1</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -222,7 +234,7 @@ include('travel-data.php');
 }
 .imgr{
 	width:100%;
-	height:350px;
+	height:auto;
 }
 .text{
 	font-size:100%;
@@ -249,8 +261,6 @@ include('travel-data.php');
 <div class="col-4">
 <h1>Name: Robert Smith</h1>
 <h1>Rating: ⭐⭐⭐⭐⭐</h1>
-<h3>Date:02/20/20</h3>
-<h3>Time:12:13pm</h3>
 </div>
 <div class="col-8">
 <p>This attraction was incredibly beautiful, I would love to go to <?php echo $Place ?> again!</p>
@@ -262,9 +272,7 @@ include('travel-data.php');
 <div class="row">
 <div class="col-4">
 <h1>Name: Alex Fu</h1>
-<h1>Rating: ⭐⭐</h1>
-<h3>Date:02/1/20</h3>
-<h3>Time:8:13pm</h3>
+<h1>Rating: ⭐⭐⭐</h1>
 </div>
 <div class="col-8">
 <p>This place is trash! Overpriced! Will not be bringing my 6 kids here again! I hate <?php echo $Place ?></p>

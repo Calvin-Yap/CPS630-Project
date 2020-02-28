@@ -63,8 +63,30 @@ color: white;
 }
 tr:nth-child(even) {background-color: #f2f2f2}
   </style>
+     <?php
+   /*
+session_start();
+if ( isset( $_SESSION['user_id'] ) ) 
+ {
+  } 
+   else 
+  {
+    header("Location: http://localhost:8080/login-request.php");
+ }
+ */
+?>
 </head>
 <body>
+<nav>
+<div class="navCon">
+	<ul>
+        <li><a class="navLink" href="home.php">Home</a></li>
+        <li><a class="navLink" href="lab3-Team9.php">db Maintain</a></li>
+        <li><a class="navLink" href="logout-request.php">Log Out</a></li>
+
+	</ul>
+</div>
+</nav>
 <h1>Enter Data into DB </h1>
 <form action="lab3.php" method="POST">
 	<table>

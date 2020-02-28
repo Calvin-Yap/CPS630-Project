@@ -42,7 +42,9 @@ if ( isset( $_SESSION['user_id'] ) )
 		<h1 class="brand" >Plan Your Travel</h1>
 	<ul>
         <li><a class="navLink" href="home.php">Home</a></li>
+        <li><a class="navLink" href="lab3-Team9.php">db Maintain</a></li>
         <li><a class="navLink" href="logout-request.php">Log Out</a></li>
+
 	</ul>
 </div>
 </nav>
