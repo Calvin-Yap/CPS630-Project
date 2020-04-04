@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<body ng-app="myApp">
+
+<p><a href="#/!">Main</a></p>
+
+<a href="#!home">Home</a>
+<a href="#!home">About Us</a>
+<a href="#!home">Contact Us</a>
+<a href="#!home">Shopping Cart</a>
+<a href="#!paris">City 2</a>
+
+
+<div ng-view></div>
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/%2F!", {
+        templateUrl : "main.htm"
+    })
+    .when("/home", {
+        templateUrl : "home.htm"
+    })
+    .when("/paris", {
+        templateUrl : "paris.htm"
+    });
+});
+</script>
+
+</body>
+</html>
