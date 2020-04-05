@@ -2,8 +2,8 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 28, 2020 at 10:15 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 06, 2020 at 12:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -25,10 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `travelPhoto`
+-- Table structure for table `invoice`
 --
 
-CREATE TABLE `travelPhoto` (
+CREATE TABLE `invoice` (
+  `Name` varchar(100) NOT NULL,
+  `Price` int(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `Username` varchar(100) NOT NULL,
+  `Review` varchar(1000) NOT NULL,
+  `rating` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `travelphoto`
+--
+
+CREATE TABLE `travelphoto` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `filename` varchar(100) NOT NULL,
@@ -39,10 +62,10 @@ CREATE TABLE `travelPhoto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `travelPhoto`
+-- Dumping data for table `travelphoto`
 --
 
-INSERT INTO `travelPhoto` (`id`, `date`, `filename`, `description`, `title`, `latitude`, `longitude`) VALUES
+INSERT INTO `travelphoto` (`id`, `date`, `filename`, `description`, `title`, `latitude`, `longitude`) VALUES
 (1, '2020-02-27', 'images/1.jpg', 'Eiffel Tower, Paris, France. The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.', 'Eifferl Tower', 48.8584, 2.2945),
 (2, NULL, 'images/11.jpg', 'Eiffel Tower, Paris, France\",\"The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.', 'Eiffel Tower', 48.8584, 2.2945),
 (3, NULL, 'images/2.jpg', 'The Colosseum, Rome, Italy, The Colosseum or Coliseum, also known as the Flavian Amphitheatre, is an oval amphitheatre in the centre of the city of Rome, Italy. Built of travertine limestone, tuff, and brick-faced concrete, it was the largest amphitheatre ever built at the time and held 50,000 to 80,000 spectators.', 'The Colosseum', 41.8902, 12.4922),
@@ -79,26 +102,30 @@ INSERT INTO `travelPhoto` (`id`, `date`, `filename`, `description`, `title`, `la
 
 CREATE TABLE `userlogin` (
   `Username` varchar(20) NOT NULL,
-  `Password` varchar(20) NOT NULL
+  `Password` varchar(20) NOT NULL,
+  `Email` varchar(100) DEFAULT NULL,
+  `FullName` varchar(100) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `Phone` bigint(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `userlogin`
 --
 
-INSERT INTO `userlogin` (`Username`, `Password`) VALUES
-('Andy', 'Andy'),
-('Calvin', 'Calvin'),
-('Nickers', 'Nickers');
+INSERT INTO `userlogin` (`Username`, `Password`, `Email`, `FullName`, `Address`, `Phone`) VALUES
+('Andy', 'Andy', 'Andy@gmail.com', 'Andy Luan', '1 Kbbq st', 1234567890),
+('Calvin', 'Calvin', 'Calvin@gmail.com', 'Calvin Yap', '2 BBT st', 1214567890),
+('Nickers', 'Nickers', 'Nicky@gmail.com', 'Tu Ngoc Dam', '1 BBT St', 6666666666);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `travelPhoto`
+-- Indexes for table `travelphoto`
 --
-ALTER TABLE `travelPhoto`
+ALTER TABLE `travelphoto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -112,9 +139,9 @@ ALTER TABLE `userlogin`
 --
 
 --
--- AUTO_INCREMENT for table `travelPhoto`
+-- AUTO_INCREMENT for table `travelphoto`
 --
-ALTER TABLE `travelPhoto`
+ALTER TABLE `travelphoto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213124;
 COMMIT;
 
