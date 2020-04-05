@@ -6,10 +6,19 @@
 <div style="position: fixed; top: 30%; left: 40%;
 ">
     <form action="" method="post">
-        <input type="text" name="username" placeholder="Enter your username" required>
-        <input type="password" name="password" placeholder="Enter your password" required>
+        <label>Username:
+            <input type="text" name="username" placeholder="Enter your username" required>
+        </label>
+        <br>
+        <label>Password:
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </label>
+        <br>
         <input type="submit" value="Submit">
+            <a href="newAccount.php"><input type="button" onclick value="Create Account"></a>
+        
     </form>
+
 </div>
 
 <?php
