@@ -5,7 +5,7 @@
 <body>
 <div style="position: fixed; top: 30%; left: 40%;
 ">
-    <form action="" method="post">
+    <form action="" method="POST">
         <label>Username:
             <input type="text" name="username" placeholder="Enter your username" required>
         </label>
@@ -15,7 +15,7 @@
         </label>
         <br>
         <input type="submit" value="Submit">
-            <a href="newAccount.php"><input type="button" onclick value="Create Account"></a>
+            <a href="newAccount.html"><input type="button" onclick value="Create Account"></a>
         
     </form>
 
