@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <title>Assignment 1 Iteration 1</title>

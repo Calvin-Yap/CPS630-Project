@@ -4,31 +4,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
 <body ng-app="myApp">
-
-<p><a href="#/!">Main</a></p>
-
-<a href="#!home">Home</a>
-<a href="#!home">About Us</a>
-<a href="#!home">Contact Us</a>
-<a href="#!home">Shopping Cart</a>
-<a href="#!paris">City 2</a>
+<a href="#/home">Home</a>
+<a href="#!about">About Us</a>
+<a href="#!contact">Contact Us</a>
+<a href="#!shopping">Shopping Cart</a>
 
 
-<div ng-view></div>
+<div ng-view>
+<div ng-include="'home.php'"></div>
+</div>
 
 <script>
 var app = angular.module("myApp", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/%2F!", {
-        templateUrl : "main.htm"
-    })
     .when("/home", {
-        templateUrl : "home.htm"
+        templateUrl : "home.php",
+        controller : "HomeController"
     })
-    .when("/paris", {
-        templateUrl : "paris.htm"
-    });
+    .when("/about", {
+        templateUrl : "home.php",
+        controller : "aboutController"
+    })
+    .when("/contact", {
+        templateUrl : "home.php",
+        controller : "contactController"
+    })
+    .when("/shopping", {
+        templateUrl : "shoppingCart.php",
+        controller : "shopController"
+    })
+    .otherwise({redirectTo:"/home"});
+});
+app.controller("HomeController", function ($scope) {
+
+});
+app.controller("aboutsController", function ($scope) {
+
+});
+app.controller("contactController", function ($scope) {
+
+});
+app.controller("shopController", function ($scope) {
+
 });
 </script>
 

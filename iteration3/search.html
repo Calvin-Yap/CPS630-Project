@@ -1,0 +1,48 @@
+<html ng-app="myApp">
+    <head>
+    <title>Plan Your Travel | Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.angularjs.org/1.5.0/angular.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="search.css">
+    </head>
+    <body ng-controller="searchController" >
+        <div class="container-fluid"> 
+            <div class="row">
+                <div class="col-4">
+                    <div  class="table">
+                        <div class="title" id="search">
+                        Country Search:
+                        <input type="text" ng-model="search"  />
+                    </div>
+                    <table>
+                        <tr>
+                            <th>
+                                <a href="" ng-click="sortField='Name'; reverse=!reverse">Name</a>
+                            </th>
+                            <th>
+                                <a href="" ng-click="sortField='Country'; reverse=!reverse">Country </a>
+                            </th>
+                            <th>
+                                <a href="" ng-click="sortField='price'; reverse=!reverse">Price</a>
+                            </th>
+                        </tr>
+                        <tr  ng-repeat="x in myData | filter:search | orderBy:sortField:reverse">
+                            <td><a ng-click="onClick(x)" href="">{{x.Name}}</a></td>
+                            <td>{{x.Country}}</td>
+                            <td>{{x.price}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                <div class="col-8">
+                    <p>{{name}}</p>
+                    <img class="photo" src="{{image}}">
+                    <p>{{description}}</p>
+                    <p>{{"Price of this Trip will be: $ " + price}}</p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    </html>
+        
