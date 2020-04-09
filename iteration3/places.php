@@ -6,7 +6,7 @@
        "Country": "France",
        "Description": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.",
        "price": "3000.99",
-       "image":"1.jpg"
+       "image":"./images/1.jpg"
     },
     {
         "ID": "2",

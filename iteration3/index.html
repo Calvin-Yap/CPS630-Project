@@ -9,7 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
 <body ng-app="myApp">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <h1 class="navbar-brand">Plan Your Travel 2</h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,18 +29,25 @@
         <li class="nav-item">
             <a class="nav-link"  href="#!search">Search</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="#!login">Login</a>
+          </li>
      </ul>
     </div>
   </nav>
+  <div ng-view>
 
-<div ng-view>
-<div ng-include="'home.php'"></div>
-</div>
+  </div>
+
 
 <script>
 var app = angular.module("myApp", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
+    .when("/login",{
+      templateUrl: "login.html",
+      controller : "loginController"
+    })
     .when("/home", {
         templateUrl : "home.html",
         controller : "homeController"
@@ -56,8 +64,45 @@ app.config(function($routeProvider) {
         templateUrl :"search.html",
         controller: "searchController"
     })
+    .when('/dashboard',{
+      resolve: {
+			check: function($location, user) {
+				if(!user.isUserLoggedIn()) {
+					$location.path('/login');
+				}
+			},
+		},
+		    templateUrl: 'dashboard.html',
+        controller: 'dashboardController'
+    })
     .otherwise({redirectTo:"/home"});
 });
+app.service('user', function() {
+	var username;
+	var loggedin = false;
+	var id;
+
+	this.setName = function(name) {
+		username = name;
+	};
+	this.getName = function() {
+		return username;
+	};
+
+	this.setID = function(userID) {
+		id = userID;
+	};
+	this.getID = function() {
+		return id;
+	};
+
+	this.isUserLoggedIn = function() {
+		return loggedin;
+	};
+	this.userLoggedIn = function() {
+		loggedin = true;
+	};
+})
 
 app.controller("homeController", function ($scope) {
    
@@ -86,9 +131,31 @@ app.controller("searchController", function ($scope,$http) {
 
   });
 });
-app.controller("searchphotoController", function ($scope) {
-    $scope.name = "test";
+app.controller("loginController", function ($scope, $http, $location, user) {
+    $scope.login = function(){
+      var username = $scope.username;
+      var password = $scope.password;
+      $http({
+        url: 'http://localhost/cps630/iteration3/server.php',
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: 'username='+username+'&password='+password
+      }).then(function(response){
+        if(response.data.status == 'loggedadmin'){
+          user.userLoggedIn();
+          user.setName(response.data.user);
+          $location.path('/dashboard');
+        }
+      })
+    }
 });
+app.controller("dashboardController",function($scope, user){
+  $scope.user = user.getName();
+});
+
+
 </script>
 
 </body>
