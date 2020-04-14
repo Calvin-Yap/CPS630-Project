@@ -36,6 +36,7 @@
     </div>
   </nav>
   <div ng-view>
+    
 
   </div>
 
@@ -48,7 +49,7 @@ app.config(function($routeProvider) {
       templateUrl: "login.html",
       controller : "loginController"
     })
-    .when("/home", {
+    .when("/", {
         templateUrl : "home.html",
         controller : "homeController"
     })
@@ -102,13 +103,13 @@ app.service('user', function() {
 	this.userLoggedIn = function() {
 		loggedin = true;
 	};
-})
+});
 
 app.controller("homeController", function ($scope) {
    
 });
 
-app.controller("aboutsController", function ($scope) {
+app.controller("aboutController", function ($scope) {
 
 });
 app.controller("contactController", function ($scope) {
@@ -118,7 +119,7 @@ app.controller("contactController", function ($scope) {
 app.controller("searchController", function ($scope,$http) {
     $http.get("places.php").then(function(response) {
     $scope.myData = response.data.records;
-    $scope.image = "1.jpg";
+    $scope.image = "images/1.jpg";
     $scope.name= "Eiffel Tower";
     $scope.description = "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.";
     $scope.price ="3000.99";
@@ -136,7 +137,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
       var username = $scope.username;
       var password = $scope.password;
       $http({
-        url: 'http://localhost/cps630/iteration3/server.php',
+        url: "http://localhost/cps630/iteration3/server.php",
         method: 'POST',
         headers:{
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -148,12 +149,23 @@ app.controller("loginController", function ($scope, $http, $location, user) {
           user.setName(response.data.user);
           $location.path('/dashboard');
         }
+        else{
+          alert('invalid');
+        }
       })
     }
 });
 app.controller("dashboardController",function($scope, user){
   $scope.user = user.getName();
 });
+app.config(['$httpProvider', function($httpProvider) {
+    if (!$httpProvider.defaults.headers.get) {
+        $httpProvider.defaults.headers.get = {};    
+    }    
+    $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+    $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
+}]);
 
 
 </script>
