@@ -5,8 +5,8 @@
     <script src="https://code.angularjs.org/1.5.0/angular.min.js" ></script>
     <link rel="stylesheet" type="text/css" href="search.css">
     </head>
-    <body ng-controller="searchController" >
-        <div class="container-fluid"> 
+    <body ng-controller="searchController">
+        <div class="container-fluid" > 
             <div class="row">
                 <div class="col-4">
                     <div  class="table">
@@ -26,9 +26,11 @@
                                 <a href="" ng-click="sortField='price'; reverse=!reverse">Price</a>
                             </th>
                         </tr>
-                        <tr  ng-repeat="x in myData | filter:search | orderBy:sortField:reverse">
-                            <td><a ng-click="onClick(x)" href="">{{x.Name}}</a></td>
-                            <td>{{x.Country}}</td>
+                        <tr ng-repeat="x in locdata | filter:search | orderBy:sortField:reverse">
+                            
+                            <td>
+                                <a ng-click="onClick(x)" href="">{{x.name}}</a></td>
+                            <td>{{x.country}}</td>
                             <td>{{x.price}}</td>
                         </tr>
                     </table>
@@ -42,7 +44,6 @@
                 </div>
             </div>
         </div>
-
     </body>
     </html>
         

@@ -46,6 +46,13 @@ var app = angular.module("myApp", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/login",{
+      resolve: {
+			check: function($location, user) {
+				if(user.isUserLoggedIn()) {
+					$location.path('/dashboard');
+				}
+			},
+		},
       templateUrl: "login.html",
       controller : "loginController"
     })
@@ -76,6 +83,14 @@ app.config(function($routeProvider) {
 		    templateUrl: 'dashboard.html',
         controller: 'dashboardController'
     })
+    .when('/logout',{
+      resolve: {
+        deadResolve: function($location,user){
+          user.clearData();
+          $location.path('/login');
+        }
+      }
+    })
     .otherwise({redirectTo:"/home"});
 });
 app.service('user', function() {
@@ -83,9 +98,7 @@ app.service('user', function() {
 	var loggedin = false;
 	var id;
 
-	this.setName = function(name) {
-		username = name;
-	};
+
 	this.getName = function() {
 		return username;
 	};
@@ -98,11 +111,31 @@ app.service('user', function() {
 	};
 
 	this.isUserLoggedIn = function() {
+    if(!!localStorage.getItem('login')) {
+			loggedin = true;
+			var data = JSON.parse(localStorage.getItem('login'));
+			username = data.username;
+			id = data.id;
+		}
 		return loggedin;
 	};
-	this.userLoggedIn = function() {
-		loggedin = true;
+
+  this.saveData = function(data){
+    username = data.user;
+    id =data.id;
+    loggedin = true;
+    localStorage.setItem('login', JSON.stringify({
+        username: username,
+        id: id
+    }));
+  };
+	this.clearData = function() {
+		localStorage.removeItem('login');
+		username = "";
+		id = "";
+		loggedin = false;
 	};
+
 });
 
 app.controller("homeController", function ($scope) {
@@ -117,20 +150,19 @@ app.controller("contactController", function ($scope) {
 });
 
 app.controller("searchController", function ($scope,$http) {
-    $http.get("places.php").then(function(response) {
-    $scope.myData = response.data.records;
-    $scope.image = "images/1.jpg";
+  $http.get("search.php")
+   .then(function (response) {
+   $scope.locdata = response.data;});
+   $scope.image = "images/1.jpg";
     $scope.name= "Eiffel Tower";
     $scope.description = "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.";
     $scope.price ="3000.99";
     $scope.onClick = function(obj){
-        $scope.name = obj.Name;
+        $scope.name = obj.name;
         $scope.image = obj.image;
-        $scope.description = obj.Description;
+        $scope.description = obj.description;
         $scope.price = obj.price;
     };
-
-  });
 });
 app.controller("loginController", function ($scope, $http, $location, user) {
     $scope.login = function(){
@@ -145,8 +177,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
         data: 'username='+username+'&password='+password
       }).then(function(response){
         if(response.data.status == 'loggedadmin'){
-          user.userLoggedIn();
-          user.setName(response.data.user);
+          user.saveData(response.data);
           $location.path('/dashboard');
         }
         else{
@@ -157,6 +188,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
 });
 app.controller("dashboardController",function($scope, user){
   $scope.user = user.getName();
+
 });
 app.config(['$httpProvider', function($httpProvider) {
     if (!$httpProvider.defaults.headers.get) {

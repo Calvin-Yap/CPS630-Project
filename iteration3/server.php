@@ -17,9 +17,10 @@ $result = mysqli_query($con, $query);
 
 if(mysqli_num_rows($result) > 0) {
         $response['status'] = 'loggedadmin';
-        $response['user'] = 'admin';
-        $response['useruiqueid'] = md5(uniqid());
-        $_SESSION['useruiqueid'] = $response['useruiqueid'];
+        $response['user'] = $username;
+        $response['id'] = md5(uniqid());
+        $_SESSION['id'] = $response['id'];
+        $_SESSION['user'] = $username;
 } else{
     $response['status']= 'notadmin';
 }
