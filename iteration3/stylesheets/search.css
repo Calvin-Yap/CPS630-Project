@@ -1,0 +1,29 @@
+.table{
+    border: 1px black solid;
+    margin-top: 2%;
+    margin-left: 2%;
+    padding: 2%;
+}
+
+.title{
+    font-size: 150%;
+    font-weight: bold;
+    padding-bottom: 2%;
+}
+
+.photo{
+    margin-top: -2%;
+    width: auto;
+    max-height: 400px;
+    margin-bottom: 5%;
+}
+
+
+.description{
+    font-size: 120%;
+}
+
+
+.moreinfo{
+    margin-top: 2%;
+}
