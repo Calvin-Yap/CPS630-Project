@@ -15,7 +15,7 @@ $query = "SELECT * FROM `users` WHERE username='$username' AND password='$passwo
 
 $result = mysqli_query($con, $query);
 
-if(mysqli_num_rows($result) > 0) {
+if(mysqli_num_rows($result) > 0 && $username=="admin") {
         $response['status'] = 'loggedadmin';
         $response['user'] = $username;
         $response['id'] = md5(uniqid());

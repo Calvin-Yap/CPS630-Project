@@ -49,6 +49,13 @@ var app = angular.module("myApp", ["uiGmapgoogle-maps","ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/login",{
+      resolve: {
+			check: function($location, user) {
+				if(user.isUserLoggedIn()) {
+					$location.path('/dashboard');
+				}
+			},
+		},
       templateUrl: "login.html",
       controller : "loginController"
     })
@@ -79,6 +86,18 @@ app.config(function($routeProvider) {
 		    templateUrl: 'dashboard.html',
         controller: 'dashboardController'
     })
+    .when('/logout',{
+      resolve: {
+        deadResolve: function($location,user){
+          user.clearData();
+          $location.path('/login');
+        }
+      }
+    })
+    .when("/dashboardreg",{
+        templateUrl :"notadmindash.html",
+        controller: "notadmindashcontroller"
+    })
     .otherwise({redirectTo:"/home"});
 });
 app.service('user', function() {
@@ -86,9 +105,6 @@ app.service('user', function() {
 	var loggedin = false;
 	var id;
 
-	this.setName = function(name) {
-		username = name;
-	};
 	this.getName = function() {
 		return username;
 	};
@@ -100,11 +116,29 @@ app.service('user', function() {
 		return id;
 	};
 
-	this.isUserLoggedIn = function() {
+  this.isUserLoggedIn = function() {
+    if(!!localStorage.getItem('login')) {
+			loggedin = true;
+			var data = JSON.parse(localStorage.getItem('login'));
+			username = data.username;
+			id = data.id;
+		}
 		return loggedin;
 	};
-	this.userLoggedIn = function() {
-		loggedin = true;
+  this.saveData = function(data){
+    username = data.user;
+    id =data.id;
+    loggedin = true;
+    localStorage.setItem('login', JSON.stringify({
+        username: username,
+        id: id
+    }));
+  };
+	this.clearData = function() {
+		localStorage.removeItem('login');
+		username = "";
+		id = "";
+		loggedin = false;
 	};
 });
 
@@ -132,7 +166,9 @@ app.controller("aboutController", function ($scope) {
 app.controller("contactController", function ($scope) {
 
 });
+app.controller("notadmindashcontroller", function ($scope) {
 
+});
 app.controller("searchController", function ($scope,$http) {
   $http.get("search.php")
    .then(function (response) {
@@ -161,45 +197,38 @@ app.controller("loginController", function ($scope, $http, $location, user) {
         data: 'username='+username+'&password='+password
       }).then(function(response){
         if(response.data.status == 'loggedadmin'){
-          user.userLoggedIn();
-          user.setName(response.data.user);
+          user.saveData(response.data);
+          console.log("admin");
           $location.path('/dashboard');
         }
         else{
-          alert('invalid');
+          $location.path('/dashboardreg');
         }
       })
       }
     $scope.register=function(){
-      var reguser = $scope.reguser;
-      var regpass = $scope.regpass;
-      var email = $scope.email;
-      var fname = $scope.fname;
-      var lname = $scope.lname;
-      var address = $scope.address;
-      var tel = $scope.tel;
       if($scope.registerForm.$valid){
-          $http.post(
+         $http.post(
           "register.php", {
-          'username': $scope.reguser,
-          'password': $scope.regpass,
+          'username1': $scope.username1,
+          'password1': $scope.password1,
           'email': $scope.email,
           'fname': $scope.fname,
           'lname': $scope.lname,
           'address': $scope.email,
-          'phone': $scope.tel
+          'phone': $scope.phone
           }
           ).then(function(response) {
-          alert(response.data);
-          $scope.reguser= null;
-          $scope.regpass= null;
+          console.log(response.data);
+          $scope.username1= null;
+          $scope.password1= null;
           $scope.email= null;
           $scope.fname= null;
           $scope.lname= null;
           $scope.address= null;
-          $scope.tel= null;
+          $scope.phone= null;
           });
-      }
+          }
     }
 });
 app.controller("dashboardController",function($scope, user, $http){
