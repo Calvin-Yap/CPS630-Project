@@ -134,20 +134,19 @@ app.controller("contactController", function ($scope) {
 });
 
 app.controller("searchController", function ($scope,$http) {
-    $http.get("places.php").then(function(response) {
-    $scope.myData = response.data.records;
-    $scope.image = "images/1.jpg";
+  $http.get("search.php")
+   .then(function (response) {
+   $scope.locdata = response.data;});
+   $scope.image = "images/1.jpg";
     $scope.name= "Eiffel Tower";
     $scope.description = "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.";
     $scope.price ="3000.99";
     $scope.onClick = function(obj){
-        $scope.name = obj.Name;
+        $scope.name = obj.name;
         $scope.image = obj.image;
-        $scope.description = obj.Description;
+        $scope.description = obj.description;
         $scope.price = obj.price;
     };
-
-  });
 });
 app.controller("loginController", function ($scope, $http, $location, user) {
     $scope.login = function(){
