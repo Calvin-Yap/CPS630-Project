@@ -1,20 +1,155 @@
 <body ng-controller="dashboardController" >
 <div>
-Welcome {{user}}
+<h1>Welcome {{user}}</h1>
 
 <form action="#!logout">
     <input type="submit" value="Logout" />
 </form>
 <h1>Areas</h1>
 <h2>View Location Data</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+    </tr>
+    <tr ng-repeat="x in searchdata | filter:search | orderBy:sortField:reverse">
+        <td>{{x.ID}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.city}}</td>
+        <td>{{x.country}}</td>
+        <td>{{x.price}}</td>
+        <td>{{x.description}}</td>
+        <td>{{x.image}}</td>
+        <td>{{x.latitude}}</td>
+        <td>{{x.longitude}}</td>
+    </tr>
+</table>
 <h2>Add Data</h2>
+<form name="adddataloc" ng-click="register">
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "reguser" placeholder="Name" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "regpass" placeholder="City" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "fname" placeholder="Country" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "lname" placeholder="Price" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="email" ng-model= "email" placeholder="Description" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "address"  placeholder="Image" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "tel" placeholder="Latitude" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "tel" placeholder="Longitude" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="register()">Add</button>
+    </div>                       
+</form>
 <h2>Delete Data by ID</h2>
+<form name="deleteLoc">
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="register()">Delete</button>
+    </div>      
+</form>
 <h1>User Accounts</h1>
 <h2>View All Accounts</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone #</th>
+
+    </tr>
+    <tr ng-repeat="x in userdata | filter:search | orderBy:sortField:reverse">
+        <td>{{x.ID}}</td>
+        <td>{{x.username}}</td>
+        <td>{{x.password}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.fname}}</td>
+        <td>{{x.lname}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.phone}}</td>
+    </tr>
+</table>
+<h2>Add Account</h2>
+<form name="adddataform" ng-click="register">
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "reguser" placeholder="Username" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "regpass" placeholder="Password" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "fname" placeholder="First Name" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "lname" placeholder="Last Name" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="email" ng-model= "email" placeholder="Email" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "address"  placeholder="Address" required>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "tel" placeholder="Phone #" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="register()">Add</button>
+    </div>                       
+</form>
 <h2>Delete Account by ID</h2>
+<form name="deleteUser">
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="register()">Delete</button>
+    </div>      
+</form>
 <h1>View Rankings</h1>
 <h2>Delete Ranking by ID</h2>
+<form name="deleteRanking">
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="register()">Delete</button>
+    </div>      
+</form>
 <h1>View Invoices</h1>
 <h2>Delete Invoice by ID</h2>
+<form name="deleteInvoice">
+    <div class="input">
+        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="register()">Delete</button>
+    </div>      
+</form>
 </div>
 </body>

@@ -193,17 +193,42 @@ app.controller("loginController", function ($scope, $http, $location, user) {
       var email = $scope.email;
       var fname = $scope.fname;
       var lname = $scope.lname;
-      var adress = $scope.adress;
+      var address = $scope.address;
       var tel = $scope.tel;
-
-      console.log(tel);
       if($scope.registerForm.$valid){
-        alert('Account Registered');
+          $http.post(
+          "register.php", {
+          'username': $scope.reguser,
+          'password': $scope.regpass,
+          'email': $scope.email,
+          'fname': $scope.fname,
+          'lname': $scope.lname,
+          'address': $scope.email,
+          'phone': $scope.tel
+          }
+          ).then(function(response) {
+          alert(response.data);
+          $scope.reguser= null;
+          $scope.regpass= null;
+          $scope.email= null;
+          $scope.fname= null;
+          $scope.lname= null;
+          $scope.address= null;
+          $scope.tel= null;
+          });
       }
     }
 });
-app.controller("dashboardController",function($scope, user){
+app.controller("dashboardController",function($scope, user, $http){
   $scope.user = user.getName();
+  $http.get("dashboard.php")
+   .then(function (response) {
+   $scope.userdata = response.data;
+   });
+   $http.get("search.php")
+   .then(function (response) {
+   $scope.searchdata = response.data;
+   });
 
 });
 app.config(['$httpProvider', function($httpProvider) {
