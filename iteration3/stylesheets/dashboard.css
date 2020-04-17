@@ -1,0 +1,32 @@
+.tablestyles{
+    border:1px solid black;
+    padding: 1%;
+    margin: 0px 1% 0px 1%;
+}
+.rowstyles{
+    background-color: lightblue;
+    padding:5px 10px 5px 10px;
+    border: 1px solid black;
+}
+
+.datastyles{
+    padding:5px 10px 5px 10px;
+    border: 1px solid black;
+
+}
+
+.datastyles:hover{
+    background-color: lightgrey;
+}
+
+.text{
+    margin: 1% 0% 1% 1%;
+}
+
+.form{
+    margin: 1% 0% 1% 1%;
+}
+.boxes{
+    padding:5px;
+    margin: .15%;
+}

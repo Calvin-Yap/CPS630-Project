@@ -239,7 +239,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
           }
     }
 });
-app.controller("dashboardController",function($scope, user, $http){
+app.controller("dashboardController",function($scope, user, $http, $route){
   $scope.user = user.getName();
   $http.get("dashboard.php")
    .then(function (response) {
@@ -249,6 +249,31 @@ app.controller("dashboardController",function($scope, user, $http){
    .then(function (response) {
    $scope.searchdata = response.data;
    });
+   $scope.register=function(){
+      if($scope.registerForm.$valid){
+         $http.post(
+          "register.php", {
+          'username1': $scope.username1,
+          'password1': $scope.password1,
+          'email': $scope.email,
+          'fname': $scope.fname,
+          'lname': $scope.lname,
+          'address': $scope.email,
+          'phone': $scope.phone
+          }
+          ).then(function(response) {
+          console.log(response.data);
+          $scope.username1= null;
+          $scope.password1= null;
+          $scope.email= null;
+          $scope.fname= null;
+          $scope.lname= null;
+          $scope.address= null;
+          $scope.phone= null;
+          $route.reload();
+          });
+          }
+    }
 
 });
 app.config(['$httpProvider', function($httpProvider) {
