@@ -7,6 +7,8 @@
     
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script>
 
 <body ng-app="myApp">
 
@@ -42,23 +44,17 @@
 
 
 <script>
-var app = angular.module("myApp", ["ngRoute"]);
+'use strict';
+var app = angular.module("myApp", ["uiGmapgoogle-maps","ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/login",{
-      resolve: {
-			check: function($location, user) {
-				if(user.isUserLoggedIn()) {
-					$location.path('/dashboard');
-				}
-			},
-		},
       templateUrl: "login.html",
       controller : "loginController"
     })
     .when("/", {
         templateUrl : "home.html",
-        controller : "homeController"
+        controller : "mapCtrl"
     })
     .when("/about", {
         templateUrl : "about.html",
@@ -83,14 +79,6 @@ app.config(function($routeProvider) {
 		    templateUrl: 'dashboard.html',
         controller: 'dashboardController'
     })
-    .when('/logout',{
-      resolve: {
-        deadResolve: function($location,user){
-          user.clearData();
-          $location.path('/login');
-        }
-      }
-    })
     .otherwise({redirectTo:"/home"});
 });
 app.service('user', function() {
@@ -98,7 +86,9 @@ app.service('user', function() {
 	var loggedin = false;
 	var id;
 
-
+	this.setName = function(name) {
+		username = name;
+	};
 	this.getName = function() {
 		return username;
 	};
@@ -111,35 +101,29 @@ app.service('user', function() {
 	};
 
 	this.isUserLoggedIn = function() {
-    if(!!localStorage.getItem('login')) {
-			loggedin = true;
-			var data = JSON.parse(localStorage.getItem('login'));
-			username = data.username;
-			id = data.id;
-		}
 		return loggedin;
 	};
-
-  this.saveData = function(data){
-    username = data.user;
-    id =data.id;
-    loggedin = true;
-    localStorage.setItem('login', JSON.stringify({
-        username: username,
-        id: id
-    }));
-  };
-	this.clearData = function() {
-		localStorage.removeItem('login');
-		username = "";
-		id = "";
-		loggedin = false;
+	this.userLoggedIn = function() {
+		loggedin = true;
 	};
-
 });
 
-app.controller("homeController", function ($scope) {
-   
+app
+.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+  //$locationProvider.hashPrefix('!');
+  //$routeProvider.otherwise({ redirectTo: '/view1' });
+}])
+.config(function (uiGmapGoogleMapApiProvider) {
+  uiGmapGoogleMapApiProvider.configure({
+    key: 'AIzaSyACWTlnsvRfilkzCbmEn7-TsVUvdWZtoHg',
+    v: '3.20', //defaults to latest 3.X anyhow
+    libraries: 'weather,geometry,visualization'
+  });
+})
+.controller('mapCtrl', function($scope, uiGmapGoogleMapApi) {
+    uiGmapGoogleMapApi.then(function(maps) {
+        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    });
 });
 
 app.controller("aboutController", function ($scope) {
@@ -150,25 +134,25 @@ app.controller("contactController", function ($scope) {
 });
 
 app.controller("searchController", function ($scope,$http) {
-  $http.get("search.php")
-   .then(function (response) {
-   $scope.locdata = response.data;});
-   $scope.image = "images/1.jpg";
+    $http.get("places.php").then(function(response) {
+    $scope.myData = response.data.records;
+    $scope.image = "images/1.jpg";
     $scope.name= "Eiffel Tower";
     $scope.description = "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.";
     $scope.price ="3000.99";
     $scope.onClick = function(obj){
-        $scope.name = obj.name;
+        $scope.name = obj.Name;
         $scope.image = obj.image;
-        $scope.description = obj.description;
+        $scope.description = obj.Description;
         $scope.price = obj.price;
     };
+
+  });
 });
 app.controller("loginController", function ($scope, $http, $location, user) {
     $scope.login = function(){
       var username = $scope.username;
       var password = $scope.password;
-      if($scope.loginForm.$valid){
       $http({
         url: "http://localhost/cps630/iteration3/server.php",
         method: 'POST',
@@ -178,33 +162,18 @@ app.controller("loginController", function ($scope, $http, $location, user) {
         data: 'username='+username+'&password='+password
       }).then(function(response){
         if(response.data.status == 'loggedadmin'){
-          user.saveData(response.data);
+          user.userLoggedIn();
+          user.setName(response.data.user);
           $location.path('/dashboard');
         }
         else{
           alert('invalid');
         }
       })
-      }
-    }
-    $scope.register=function(){
-      var reguser = $scope.reguser;
-      var regpass = $scope.regpass;
-      var email = $scope.email;
-      var fname = $scope.fname;
-      var lname = $scope.lname;
-      var adress = $scope.adress;
-      var tel = $scope.tel;
-
-      console.log(tel);
-      if($scope.registerForm.$valid){
-        alert('Account Registered');
-      }
     }
 });
 app.controller("dashboardController",function($scope, user){
   $scope.user = user.getName();
-
 });
 app.config(['$httpProvider', function($httpProvider) {
     if (!$httpProvider.defaults.headers.get) {
