@@ -21,8 +21,11 @@ if(mysqli_num_rows($result) > 0 && $username=="admin") {
         $response['id'] = md5(uniqid());
         $_SESSION['id'] = $response['id'];
         $_SESSION['user'] = $username;
-} else{
-    $response['status']= 'notadmin';
+} elseif(mysqli_num_rows($result) > 0){
+        $response['status']= 'notadmin';
+}
+else{
+    $response['status']= 'notuser';
 }
 
 echo json_encode($response);

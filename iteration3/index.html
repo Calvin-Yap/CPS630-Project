@@ -201,8 +201,11 @@ app.controller("loginController", function ($scope, $http, $location, user) {
           console.log("admin");
           $location.path('/dashboard');
         }
-        else{
+        if(response.data.status == 'notadmin'){
           $location.path('/dashboardreg');
+        }
+        if(response.data.status == 'notuser'){
+          alert("Invalid Account, Check Username and Password or Please Register");
         }
       })
       }
