@@ -190,27 +190,29 @@ app.controller("loginController", function ($scope, $http, $location, user) {
     $scope.login = function(){
       var username = $scope.username;
       var password = $scope.password;
-      $http({
-        url: "http://localhost/cps630/iteration3/server.php",
-        method: 'POST',
-        headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        data: 'username='+username+'&password='+password
-      }).then(function(response){
-        if(response.data.status == 'loggedadmin'){
-          user.saveData(response.data);
-          console.log("admin");
-          $location.path('/dashboard');
-        }
-        if(response.data.status == 'notadmin'){
-          user.saveData(response.data);
-          $location.path('/dashboardreg');
-        }
-        if(response.data.status == 'notuser'){
-          alert("Invalid Account, Check Username and Password or Please Register");
-        }
-      })
+      if($scope.loginForm.$valid){
+        $http({
+          url: "http://localhost/cps630/iteration3/server.php",
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          data: 'username='+username+'&password='+password
+        }).then(function(response){
+          if(response.data.status == 'loggedadmin'){
+            user.saveData(response.data);
+            console.log("admin");
+            $location.path('/dashboard');
+          }
+          if(response.data.status == 'notadmin'){
+            user.saveData(response.data);
+            $location.path('/dashboardreg');
+          }
+          if(response.data.status == 'notuser'){
+            alert("Invalid Account, Check Username and Password or Please Register");
+          }
+        })
+      }
       }
     $scope.register=function(){
       if($scope.registerForm.$valid){
