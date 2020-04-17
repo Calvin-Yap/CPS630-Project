@@ -1,35 +1,63 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
 </head>
 <body>
-    <h1>Welcome, Please Log in Bellow</h1>
-    <div id="loginForm">
-        <div class="input">
-            <input class="boxes" type="text" ng-model= "username" placeholder="Username">
+    <div class="container-fluid" > 
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="spacing">
+                    <h1 class="title">Welcome, Please Log in Bellow</h1>
+                </div>
+                <form name="loginForm">
+                    <div class="input">
+                        <input class="boxes" type="text" ng-model= "username" placeholder="Username" required>
+                    </div>
+                    <div class="input">
+                        <input class="boxes" type="text" ng-model= "password" placeholder="Password" required>
+                    </div>
+                    <div class= "input">
+                        <button class="button" ng-click="login()">Login</button>
+                    </div>
+                </form>
+                <div>
+                <h2 class="title">No Account? Sign Up its quick and easy.</h2>
+
+                    <form name="registerForm" ng-click="register">
+                        <div class="input">
+                            <input class="boxes" type="text" ng-model= "reguser" placeholder="Username" required>
+                        </div>
+                        <div class="input">
+                            <input class="boxes" type="text" ng-model= "regpass" placeholder="Password" required>
+                        </div>
+                        <div class="input">
+                            <input class="boxes" type="text" ng-model= "fname" placeholder="First Name" required>
+                        </div>
+                        <div class="input">
+                            <input class="boxes" type="text" ng-model= "lname" placeholder="Last Name" required>
+                        </div>
+                        <div class="input">
+                            <input class="boxes" type="email" ng-model= "email" placeholder="Email" required>
+                        </div>
+                        <div class="input">
+                            <input class="boxes" type="text" ng-model= "address"  placeholder="Address" required>
+                        </div>
+                        <div class="input">
+                            <input class="boxes" type="text" ng-model= "tel" placeholder="Phone #" required>
+                        </div>
+                        <div class= "input">
+                            <button class="button" type="submit" ng-click="register()">Register</button>
+                        </div>                       
+                    </form>
+                </div>
+            </div>
+            </div>
+            <div class="col-3"></div>
         </div>
-        <div class="input">
-            <input class="boxes" type="text" ng-model= "password" placeholder="Password">
-        </div>
-        <div class= "input">
-            <button ng-click="login()">Login</button>
-        </div>
-    </div>
-    <div>
-    <h2>No Account? Sign Up its quick and easy.</h2>
-    <div id="registerForm">
-        <div class="input">
-            <input class="boxes" type="text"  placeholder="Username">
-        </div>
-        <div class="input">
-            <input class="boxes" type="text"  placeholder="Password">
-        </div>
-        <div class= "input">
-            <button ng-click="login()">Register</button>
-        </div>
-    </div>
-    </div>
+       
 </body>
 </html>
 

@@ -168,6 +168,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
     $scope.login = function(){
       var username = $scope.username;
       var password = $scope.password;
+      if($scope.loginForm.$valid){
       $http({
         url: "http://localhost/cps630/iteration3/server.php",
         method: 'POST',
@@ -184,6 +185,21 @@ app.controller("loginController", function ($scope, $http, $location, user) {
           alert('invalid');
         }
       })
+      }
+    }
+    $scope.register=function(){
+      var reguser = $scope.reguser;
+      var regpass = $scope.regpass;
+      var email = $scope.email;
+      var fname = $scope.fname;
+      var lname = $scope.lname;
+      var adress = $scope.adress;
+      var tel = $scope.tel;
+
+      console.log(tel);
+      if($scope.registerForm.$valid){
+        alert('Account Registered');
+      }
     }
 });
 app.controller("dashboardController",function($scope, user){
