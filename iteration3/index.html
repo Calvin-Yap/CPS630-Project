@@ -51,9 +51,11 @@ app.config(function($routeProvider) {
     .when("/login",{
       resolve: {
 			check: function($location, user) {
-				if(user.isUserLoggedIn()) {
+				if(user.isUserLoggedIn() && user.getName()=="admin") {
 					$location.path('/dashboard');
-				}
+				}else if (user.isUserLoggedIn()){
+          $location.path('/dashboardreg');
+        }
 			},
 		},
       templateUrl: "login.html",
@@ -202,6 +204,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
           $location.path('/dashboard');
         }
         if(response.data.status == 'notadmin'){
+          user.saveData(response.data);
           $location.path('/dashboardreg');
         }
         if(response.data.status == 'notuser'){

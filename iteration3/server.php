@@ -23,6 +23,10 @@ if(mysqli_num_rows($result) > 0 && $username=="admin") {
         $_SESSION['user'] = $username;
 } elseif(mysqli_num_rows($result) > 0){
         $response['status']= 'notadmin';
+        $response['user'] = $username;
+        $response['id'] = md5(uniqid());
+        $_SESSION['id'] = $response['id'];
+        $_SESSION['user'] = $username;
 }
 else{
     $response['status']= 'notuser';
