@@ -235,7 +235,7 @@ app.controller("notadmindashcontroller", function ($scope) {
 
 });
 app.controller("searchController", function ($scope,$http) {
-  $http.get("search.php")
+  $http.get("requests/search.php")
    .then(function (response) {
    $scope.locdata = response.data;});
    $scope.image = "images/1.jpg";
@@ -255,7 +255,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
       var password = $scope.password;
       if($scope.loginForm.$valid){
         $http({
-          url: "http://localhost/cps630/iteration3/server.php",
+          url: "http://localhost/cps630/iteration3/requests/server.php",
           method: 'POST',
           headers:{
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -280,7 +280,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
     $scope.register=function(){
       if($scope.registerForm.$valid){
          $http.post(
-          "register.php", {
+          "requests/register.php", {
           'username1': $scope.username1,
           'password1': $scope.password1,
           'email': $scope.email,
@@ -290,7 +290,7 @@ app.controller("loginController", function ($scope, $http, $location, user) {
           'phone': $scope.phone
           }
           ).then(function(response) {
-          console.log(response.data);
+          alert(response.data);
           $scope.username1= null;
           $scope.password1= null;
           $scope.email= null;
@@ -304,18 +304,18 @@ app.controller("loginController", function ($scope, $http, $location, user) {
 });
 app.controller("dashboardController",function($scope, user, $http, $route){
   $scope.user = user.getName();
-  $http.get("dashboard.php")
+  $http.get("requests/dashboard.php")
    .then(function (response) {
    $scope.userdata = response.data;
    });
-   $http.get("search.php")
+   $http.get("requests/search.php")
    .then(function (response) {
    $scope.searchdata = response.data;
    });
    $scope.register=function(){
       if($scope.registerForm.$valid){
          $http.post(
-          "register.php", {
+          "requests/register.php", {
           'username1': $scope.username1,
           'password1': $scope.password1,
           'email': $scope.email,

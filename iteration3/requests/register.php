@@ -11,9 +11,9 @@ $address = mysqli_real_escape_string($conn, $info->address);
 $phone = mysqli_real_escape_string($conn, $info->phone);
 $query = "INSERT INTO `users`(`username`, `password`, `email`, `fname`, `lname`, `address`, `phone`) VALUES ('$username1', '$password1', '$email', '$fname', '$lname', '$address', '$phone')"; 
 if(mysqli_query($conn, $query)) {
-echo "Insert Data Successfully";
+echo "Account Created";
 }
 else {
-echo "Failed";
+echo "Please Change Username or Email as it has already been used";
 }
 ?>
