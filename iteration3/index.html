@@ -144,8 +144,7 @@ app.service('user', function() {
 	};
 });
 
-app
-.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider){
   //$locationProvider.hashPrefix('!');
   //$routeProvider.otherwise({ redirectTo: '/view1' });
 }])
@@ -157,10 +156,73 @@ app
   });
 })
 .controller('mapCtrl', function($scope, uiGmapGoogleMapApi) {
-    uiGmapGoogleMapApi.then(function(maps) {
-        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
-    });
-});
+  var lat1 = 43.741667;
+  var long1= -79.373333;
+  var lat2 = 39.915987;
+  var long2 = 116.397925;
+
+  var R = 6371.0710; // Radius of the Earth in miles
+  var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
+  var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
+  var difflat = rlat2-rlat1; // Radian difference (latitudes)
+  var difflon = (long2-long1) * (Math.PI/180); // Radian difference (longitudes)
+
+  var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+  d.toFixed(2);
+  $scope.distance = d.toFixed(2);
+
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4};
+    $scope.polylines = [];
+
+    $scope.marker1 = {
+      id: 0,
+      options: {label:"Location A" },
+      coords: {
+        latitude: lat1,
+        longitude: long1
+    }};
+
+    $scope.marker2 = {
+      id: 1,
+      options: {label:"Location B" },
+      coords: {
+        latitude: lat2,
+        longitude: long2
+    }};
+       
+    uiGmapGoogleMapApi.then(function(){
+      $scope.polylines = [
+            {
+                id: 1,
+                path: [
+                    {
+                        latitude: lat1,
+                        longitude: long1
+                    },
+                    {
+                        latitude: lat2,
+                        longitude: long2
+                    }
+        
+                ],
+                stroke: {
+                    color: '#6060FB',
+                    weight: 3
+                },
+     
+                visible: true,
+                icons: [{
+                    icon: {
+                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                    },
+                    offset: '25px',
+                    repeat: '50px'
+                }]
+            }
+     
+        ];
+        });
+        });
 
 app.controller("aboutController", function ($scope) {
 
