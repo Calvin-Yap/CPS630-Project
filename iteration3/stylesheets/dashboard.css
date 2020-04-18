@@ -7,11 +7,13 @@
     background-color: lightblue;
     padding:5px 10px 5px 10px;
     border: 1px solid black;
+    font-family:'Roboto',sans-serif;
 }
 
 .datastyles{
     padding:5px 10px 5px 10px;
     border: 1px solid black;
+    font-family:'Roboto',sans-serif;
 
 }
 
@@ -30,3 +32,21 @@
     padding:5px;
     margin: .15%;
 }
+
+.button{
+    padding:5px 15px 5px 15px;
+    border:0.1em solid #FFFFFF;
+    border-radius:30px;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:black;
+    text-align:center;
+    transition: all 0.5s;
+
+}
+
+.button:hover{
+    color:#000000;
+    background-color:lightblue;
+    }
