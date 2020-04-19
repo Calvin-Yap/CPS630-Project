@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Plan Your Travel | Home</title>
-
+    <link rel="stylesheet" type="text/css" href="stylesheets/search.css">
     <!--css-->
     <style type="text/css">
 .angular-google-map-container {
@@ -14,8 +14,36 @@
 </head>
 
 <body ng-controller="mapCtrl">
-    <div>Distance: {{distance}}km</div>
+    <h1>Compare Locations</h1>
+                    <select ng-model="LocationA" ng-options="x.name for x in locdata" ng-change="coordsA()"></select>
+                    
+                    <select ng-model="LocationB" ng-options="x.name for x in locdata" ng-change="coordsB()"></select>
+                    <button ng-click="coordsA()">Show on Map</button>
 
+
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="moreinfo">
+                                    <p class="title">{{LocationA.name}}</p>
+                                    <img class="photo" src="{{LocationA.image}}">
+                                    <p class="description">{{LocationA.description}}</p>
+                                    <p class="description">{{"Price: $ " + LocationA.price}}</p> 
+                                </div> 
+                            </td>
+                            <td>
+                                <div class="moreinfo">
+                                        <p class="title">{{LocationB.name}}</p>
+                                        <img class="photo" src="{{LocationB.image}}">
+                                        <p class="description">{{LocationB.description}}</p>
+                                        <p class="description">{{"Price: $ " + LocationB.price}}</p> 
+                                </div> 
+                            </td>
+                         </tr>
+                        <th colspan="2"> 
+                                <p class="description">{{"Distance between the TWO selected locations:  " + distance + "km"}}</p> 
+                            </th>
+                    </table>
   <div class="container-fluid">
 		<div class="row">
 			<div class="container-fluid">
@@ -23,10 +51,10 @@
           <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
             <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible'
                       geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
-                      <ui-gmap-marker coords="marker1.coords" options="marker1.options" events="marker1.events" idkey="marker1.id">
-                      </ui-gmap-marker>
-                      <ui-gmap-marker coords="marker2.coords" options="marker2.options" events="marker2.events" idkey="marker2.id">
-                      </ui-gmap-marker>
+                      <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
+                          <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'" modelsbyref="false" options="'self'">
+                            </ui-gmap-markers>
+
                     </ui-gmap-google-map>
 				</div>
 			</div>

@@ -156,41 +156,97 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
     libraries: 'weather,geometry,visualization'
   });
 })
-.controller('mapCtrl', function($scope, uiGmapGoogleMapApi) {
-  var lat1 = 43.741667;
-  var long1= -79.373333;
-  var lat2 = 39.915987;
-  var long2 = 116.397925;
-
+.controller('mapCtrl', function($scope, uiGmapGoogleMapApi, $http) {
+  $http.get("requests/search.php")
+   .then(function (response) {
+   $scope.locdata = response.data;});
+   var lat1 = 0;
+  var long1= 0;
+  var lat2 = 0;
+  var long2 = 0;
+  var nameA = "";
+  var nameB = "";
+  var setA = false;
+  var setB = false;
+  $scope.randomMarkers=[];
+  function distanceCalc(){
   var R = 6371.0710; // Radius of the Earth in miles
   var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
   var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
   var difflat = rlat2-rlat1; // Radian difference (latitudes)
   var difflon = (long2-long1) * (Math.PI/180); // Radian difference (longitudes)
-
   var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-  d.toFixed(2);
-  $scope.distance = d.toFixed(2);
+  return d;
+  };
+  $scope.distance = distanceCalc().toFixed(2);
 
     $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4};
     $scope.polylines = [];
+    
+    $scope.coordsA= function(){
+      lat1 = $scope.LocationA.latitude;
+      long1 = $scope.LocationA.longitude;
+      nameA = $scope.LocationA.name;
+      
+      if(setB == false){
+        nameB = nameA;
+        lat2 = lat1;
+        long2 = long1;
+        setB = true;
+        setA = true;
+      };
+      $scope.randomMarkers = [
+            {
+                id: 1,
+                latitude: lat1,
+                longitude: long1,
+                options: {label: nameA},
+                title: 'Location A'
+            },
+            {
+                id: 2,
+                latitude: lat2,
+                longitude: long2,
+                options: {label: nameB},
+                title: 'Location B'
+            }
+        ];
+        $scope.distance=distanceCalc().toFixed(2);
+        path();
+    };
 
-    $scope.marker1 = {
-      id: 0,
-      options: {label:"Location A" },
-      coords: {
-        latitude: lat1,
-        longitude: long1
-    }};
+    $scope.coordsB= function(){
+      lat2 = $scope.LocationB.latitude;
+      long2 = $scope.LocationB.longitude;
+      nameB = $scope.LocationB.name;
 
-    $scope.marker2 = {
-      id: 1,
-      options: {label:"Location B" },
-      coords: {
-        latitude: lat2,
-        longitude: long2
-    }};
-       
+      if(setA == false){
+        nameA = nameB;
+        lat1 = lat2;
+        long1 = long2;
+        setB = true;
+        setA = true;
+      };
+      $scope.randomMarkers = [
+            {
+                id: 1,
+                latitude: lat1,
+                longitude: long1,
+                options: {label: $scope.LocationA.name},
+                title: 'Location A'
+            },
+            {
+                id: 2,
+                latitude: lat2,
+                longitude: long2,
+                options: {label: $scope.LocationB.name},
+                title: 'Location B'
+            }
+        ];
+        $scope.distance=distanceCalc().toFixed(2);
+        path();
+    };
+    function path(){   
     uiGmapGoogleMapApi.then(function(){
       $scope.polylines = [
             {
@@ -222,8 +278,10 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
             }
      
         ];
+        });}
+        
         });
-        });
+
 
 app.controller("aboutController", function ($scope) {
 
