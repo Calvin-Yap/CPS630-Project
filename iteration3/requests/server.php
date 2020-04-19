@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 if(!isset($_POST)) die();
 
@@ -33,3 +34,4 @@ else{
 }
 
 echo json_encode($response);
+?>
