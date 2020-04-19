@@ -2,7 +2,7 @@
     <title>Plan Your Travel | Dashboard</title>  
     <link rel="stylesheet" type="text/css" href="stylesheets/dashboard.css">
 </head>
-<body ng-controller="dashboardController" >
+<body>
 <div>
 <h1 class="text">Welcome {{user}}</h1>
 <div class="form">
@@ -38,45 +38,45 @@
 </table>
 <h2 class="text">Add Data</h2>
 <div class="form">
-<form name="adddataloc" ng-click="register">
+<form name="dataform" ng-click="addtoloc">
     <div class="input">
-        <input class="boxes" type="text" ng-model= "reguser" placeholder="Name" required>
+        <input class="boxes" type="text" ng-model= "locname" placeholder="Name" required>
     </div>
     <div class="input">
-        <input class="boxes" type="text" ng-model= "regpass" placeholder="City" required>
+        <input class="boxes" type="text" ng-model= "city" placeholder="City" required>
     </div>
     <div class="input">
-        <input class="boxes" type="text" ng-model= "fname" placeholder="Country" required>
+        <input class="boxes" type="text" ng-model= "country" placeholder="Country" required>
     </div>
     <div class="input">
-        <input class="boxes" type="text" ng-model= "lname" placeholder="Price" required>
+        <input class="boxes" type="text" ng-model= "price" placeholder="Price" required>
     </div>
     <div class="input">
-        <input class="boxes" type="email" ng-model= "email" placeholder="Description" required>
+        <input class="boxes" type="text" ng-model= "description" placeholder="Description" required>
     </div>
     <div class="input">
-        <input class="boxes" type="text" ng-model= "address"  placeholder="Image" required>
+        <input class="boxes" type="text" ng-model= "image"  placeholder="Image" required>
     </div>
     <div class="input">
-        <input class="boxes" type="text" ng-model= "tel" placeholder="Latitude" required>
+        <input class="boxes" type="text" ng-model= "lat" placeholder="Latitude" required>
     </div>
     <div class="input">
-        <input class="boxes" type="text" ng-model= "tel" placeholder="Longitude" required>
+        <input class="boxes" type="text" ng-model= "long" placeholder="Longitude" required>
     </div>
     <div class= "input">
-        <button class="button" type="submit" ng-click="register()">Add</button>
+        <button class="button" type="submit" ng-click="addtoloc()">Add</button>
     </div>                       
 </form>
 </div>
 
 <h2 class="text">Delete Data by ID</h2>
-<div class="form">
-<form name="deleteLoc">
+<div class="form" ng-click="deleteloc">
+<form name="locdelete">
     <div class="input">
-        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+        <input class="boxes" type="text" ng-model= "locID" placeholder="ID" required>
     </div>
     <div class= "input">
-        <button class="button" type="submit" ng-click="register()">Delete</button>
+        <button class="button" type="submit" ng-click="deleteloc()">Delete</button>
     </div>      
 </form>
 </div>

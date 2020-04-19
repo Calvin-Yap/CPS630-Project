@@ -325,7 +325,7 @@ app.controller("dashboardController",function($scope, user, $http, $route){
           'phone': $scope.phone
           }
           ).then(function(response) {
-          console.log(response.data);
+          alert(response.data);
           $scope.username1= null;
           $scope.password1= null;
           $scope.email= null;
@@ -333,6 +333,47 @@ app.controller("dashboardController",function($scope, user, $http, $route){
           $scope.lname= null;
           $scope.address= null;
           $scope.phone= null;
+          $route.reload();
+          });
+          }
+    }
+    $scope.addtoloc=function(){
+      if($scope.dataform.$valid){
+         $http.post(
+          "requests/location.php", {
+          'locname': $scope.locname,
+          'city': $scope.city,
+          'country': $scope.country,
+          'price': $scope.price,
+          'description': $scope.description,
+          'image': $scope.image,
+          'lat': $scope.lat,
+          'long': $scope.long
+          }
+          ).then(function(response) {
+          console.log(response.data);
+          $scope.locname= null;
+          $scope.city= null;
+          $scope.country= null;
+          $scope.price= null;
+          $scope.description= null;
+          $scope.image = null;
+          $scope.lat= null;
+          $scope.long= null;
+          $route.reload();
+          });
+          }
+    }
+    $scope.deleteloc = function(){
+      if($scope.locdelete.$valid){
+        if(confirm("Are you sure you want to delete entry with ID " + $scope.locID +"?"))
+         $http.post(
+          "requests/locdelete.php", {
+          'locname': $scope.locID
+          }
+          ).then(function(response) {
+          alert(response.data);
+          $scope.locID= null;
           $route.reload();
           });
           }
