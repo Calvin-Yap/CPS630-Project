@@ -150,6 +150,7 @@
     <tr>
         <th class="rowstyles">ID</th>
         <th class="rowstyles">User</th>
+        <th class="rowstyles">Location</th>
         <th class="rowstyles">Ranking</th>
         <th class="rowstyles">Description</th>
 
@@ -157,6 +158,7 @@
     <tr ng-repeat="x in rankingdata | filter:search | orderBy:sortField:reverse">
         <td class="datastyles">{{x.ID}}</td>
         <td class="datastyles">{{x.username}}</td>
+        <td class="datastyles">{{x.location}}</td>
         <td class="datastyles">{{x.ranking}}</td>
         <td class="datastyles">{{x.description}}</td>
     </tr>

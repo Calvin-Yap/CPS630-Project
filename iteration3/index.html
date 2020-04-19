@@ -278,9 +278,13 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
             }
      
         ];
-        });}
-        
         });
+    }
+    $http.get("requests/ranking.php")
+    .then(function (response) {
+    $scope.ranks = response.data;});
+
+});
 
 
 app.controller("aboutController", function ($scope) {

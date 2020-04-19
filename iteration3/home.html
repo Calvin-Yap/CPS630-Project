@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Plan Your Travel | Home</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/dashboard.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/search.css">
     <!--css-->
     <style type="text/css">
@@ -59,6 +60,27 @@
 				</div>
 			</div>
 		</div>
+</div>
+
+<div>
+    <h1>Rankings</h1>
+    <table class="tablestyles">
+        <tr>
+
+            <th class="rowstyles">User</th>
+            <th class="rowstyles">Location</th>
+            <th class="rowstyles">Ranking</th>
+            <th class="rowstyles">Description</th>
+    
+        </tr>
+        <tr ng-repeat="x in ranks | filter:search | orderBy:sortField:reverse">
+
+            <td class="datastyles">{{x.username}}</td>
+            <td class="datastyles">{{x.name}}</td>
+            <td class="datastyles">{{x.ranking}}</td>
+            <td class="datastyles">{{x.description}}</td>
+        </tr>
+    </table>
 </div>
 </body>
 
