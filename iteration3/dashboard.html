@@ -154,9 +154,9 @@
         <th class="rowstyles">Description</th>
 
     </tr>
-    <tr ng-repeat="x in undefined | filter:search | orderBy:sortField:reverse">
+    <tr ng-repeat="x in rankingdata | filter:search | orderBy:sortField:reverse">
         <td class="datastyles">{{x.ID}}</td>
-        <td class="datastyles">{{x.user}}</td>
+        <td class="datastyles">{{x.username}}</td>
         <td class="datastyles">{{x.ranking}}</td>
         <td class="datastyles">{{x.description}}</td>
     </tr>
@@ -181,9 +181,9 @@
 
 
     </tr>
-    <tr ng-repeat="x in undefined | filter:search | orderBy:sortField:reverse">
+    <tr ng-repeat="x in invoicedata | filter:search | orderBy:sortField:reverse">
         <td class="datastyles">{{x.ID}}</td>
-        <td class="datastyles">{{x.user}}</td>
+        <td class="datastyles">{{x.username}}</td>
         <td class="datastyles">{{x.invoice}}</td>
 
     </tr>

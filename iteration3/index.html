@@ -312,6 +312,12 @@ app.controller("dashboardController",function($scope, user, $http, $route){
    .then(function (response) {
    $scope.searchdata = response.data;
    });
+   $http.get("requests/invoice.php")
+   .then(function (response) {
+   $scope.invoicedata = response.data;});
+   $http.get("requests/ranking.php")
+   .then(function (response) {
+   $scope.rankingdata = response.data;});
    $scope.register=function(){
       if($scope.registerForm.$valid){
          $http.post(
