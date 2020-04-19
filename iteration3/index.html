@@ -293,9 +293,7 @@ app.controller("aboutController", function ($scope) {
 app.controller("contactController", function ($scope) {
 
 });
-app.controller("notadmindashcontroller", function ($scope) {
 
-});
 app.controller("searchController", function ($scope,$http) {
   $http.get("requests/search.php")
    .then(function (response) {
@@ -489,6 +487,68 @@ app.controller("dashboardController",function($scope, user, $http, $route){
           }
     }
 
+});
+app.controller("notadmindashcontroller", function ($scope,user, $http, $route) {
+
+
+  $scope.user = user.getName();
+  var username = user.getName();
+  var location1 =$scope.location1;
+  var description1 = $scope.description1;
+  var rank = $scope.rank;
+  $http.get("requests/search.php")
+   .then(function (response) {
+   $scope.searchdata = response.data;
+   });
+  $http({
+          url: "http://localhost/cps630/iteration3/requests/userinvoice.php",
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          data: 'username='+username
+        }).then(function(response){
+          $scope.userinvoicedata = response.data;
+        });
+$http({
+          url: "http://localhost/cps630/iteration3/requests/userranking.php",
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          data: 'username='+username
+        }).then(function(response){
+          $scope.userrankingdata = response.data;
+        });
+        $scope.creditcard = function(obj){
+          if($scope.invoicepay.$valid){
+          alert("Your Invoices have been paid off");
+          $scope.namecard =null;
+          $scope.creditcardnum =null;
+          $scope.cvv =null;
+          $scope.billaddress =null;
+        }
+
+    };
+    $scope.addreview=function(){
+      if($scope.reviewadd.$valid){
+        $http.post(
+          "requests/addranking.php", {
+          'username': username,
+          'location': location1,
+          'description': description1,
+          'rank': rank
+          }
+          ).then(function(response) {
+            console.log(response.data);
+          alert("Added Check the Home Page");
+          $scope.rank= null;
+          $scope.description= null;
+          $scope.location= null;
+          $route.reload();
+          });
+          }
+    }
 });
 app.config(['$httpProvider', function($httpProvider) {
     if (!$httpProvider.defaults.headers.get) {

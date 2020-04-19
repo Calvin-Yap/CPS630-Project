@@ -1,6 +1,85 @@
 <head>
     <title>Plan Your Travel | Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/search.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/about.css">
 </head>
-<form action="#!logout">
-    <input type="submit" value="Logout" />
+
+
+<div class="space">
+    <h1 >Welcome {{user}}</h1>
+    <form action="#!logout">
+        <button class="button" type="submit" value="Logout" >Logout</button>
+    </form>
+    <h1>Your Reviews and Rankings</h1>
+    <table class="tablestyles">
+        <tr>
+            <th class="rowstyles">User</th>
+            <th class="rowstyles">Location</th>
+            <th class="rowstyles">Ranking</th>
+            <th class="rowstyles">Description</th>
+    
+        </tr>
+        <tr ng-repeat="x in userrankingdata ">
+            <td class="datastyles">{{x.username}}</td>
+            <td class="datastyles">{{x.name}}</td>
+            <td class="datastyles">{{x.ranking}}</td>
+            <td class="datastyles">{{x.description}}</td>
+        </tr>
+    </table>
+<h1>Add a Review and Rank</h1>
+<form name="reviewadd" ng-click="addreview">
+    <div class="input">
+        <label>Enter Location</label>
+        <select ng-model="location1"  placeholder="Location" required><option ng-repeat="x in searchdata" value="{{x.name}}">{{x.name}}</option></select>
+    </div>
+    <div class="input">
+        <label>Enter Rank</label>
+        <select ng-model="rank" required>
+            <option value = "1">1</option>
+            <option  value = "2">2</option>
+            <option  value = "3">3</option>
+            <option  value = "4">4</option>
+            <option  value = "5">5</option>
+        </select>
+    </div>
+    <div class="input">
+        <input class="boxes" type="text" name="description1" ng-model= "description1" placeholder="Description" required>
+    </div>
+    <div class= "input">
+        <button class="button" type="submit" ng-click="addreview()">Add</button>
+    </div>                       
 </form>
+
+    <h1>Your Invoices</h1>
+    <table class="tablestyles">
+        <tr>
+            <th class="rowstyles">User</th>
+            <th class="rowstyles">Invoices</th>
+    
+    
+        </tr>
+        <tr ng-repeat="x in userinvoicedata">
+            <td class="datastyles">{{x.username}}</td>
+            <td class="datastyles">{{x.invoice}}</td>
+    
+        </tr>
+    </table>
+
+    <h1>Pay off Invoice</h1>
+    <form name="invoicepay" ng-click="creditcard">
+        <div class="input">
+            <input type="text" ng-model= "namecard" placeholder="Name on Card" required>
+        </div>
+        <div class="input">
+            <input type="text"  ng-model= "creditcardnum" placeholder="Credit Card #" required>
+        </div>
+        <div class="input">
+            <input type="text" ng-model= "cvv" placeholder="CVV">
+        </div>
+        <div class="input">
+            <input type="text" ng-model= "billaddress" placeholder="Billing Address" required>
+        </div>
+        <input type="submit" value="Submit" ng-click="creditcard()">
+      </form> 
+</div>
