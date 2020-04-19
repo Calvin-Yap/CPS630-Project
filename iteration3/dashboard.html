@@ -136,36 +136,66 @@
 </div>
 <h2 class="text">Delete Account by ID</h2>
 <div class="form">
-<form name="deleteUser">
+<form name="deleteUser" ng-click="deleteaccount">
     <div class="input">
-        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+        <input class="boxes" type="text" ng-model= "userID" placeholder="ID" required>
     </div>
     <div class= "input">
-        <button class="button" type="submit" ng-click="register()">Delete</button>
+        <button class="button" type="submit" ng-click="deleteaccount()">Delete</button>
     </div>      
 </form>
 </div>
 <h1 class="text">View Rankings</h1>
+<table class="tablestyles">
+    <tr>
+        <th class="rowstyles">ID</th>
+        <th class="rowstyles">User</th>
+        <th class="rowstyles">Ranking</th>
+        <th class="rowstyles">Description</th>
+
+    </tr>
+    <tr ng-repeat="x in undefined | filter:search | orderBy:sortField:reverse">
+        <td class="datastyles">{{x.ID}}</td>
+        <td class="datastyles">{{x.user}}</td>
+        <td class="datastyles">{{x.ranking}}</td>
+        <td class="datastyles">{{x.description}}</td>
+    </tr>
+</table>
 <h2 class="text">Delete Ranking by ID</h2>
 <div class="form">
-<form name="deleteRanking">
-    <div class="input">
-        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+<form name="deleteRanking" ng-click="deleteranking">
+    <div class="input" >
+        <input class="boxes" type="text" ng-model= "rankingID" placeholder="ID" required>
     </div>
     <div class= "input">
-        <button class="button" type="submit" ng-click="register()">Delete</button>
+        <button class="button" type="submit" ng-click="deleteranking()">Delete</button>
     </div>      
 </form>
 </div>
 <h1 class="text">View Invoices</h1>
+<table class="tablestyles">
+    <tr>
+        <th class="rowstyles">ID</th>
+        <th class="rowstyles">User</th>
+        <th class="rowstyles">Invoices</th>
+
+
+    </tr>
+    <tr ng-repeat="x in undefined | filter:search | orderBy:sortField:reverse">
+        <td class="datastyles">{{x.ID}}</td>
+        <td class="datastyles">{{x.user}}</td>
+        <td class="datastyles">{{x.invoice}}</td>
+
+    </tr>
+</table>
 <h2 class="text">Delete Invoice by ID</h2>
 <div class="form">
-<form name="deleteInvoice">
+<form name="deleteInvoice" ng-click="deleteinvoice">
     <div class="input">
-        <input class="boxes" type="text" ng-model= "reguser" placeholder="ID" required>
+        <input class="boxes" type="text" ng-model= "invoiceID" placeholder="ID" required>
     </div>
     <div class= "input">
-        <button class="button" type="submit" ng-click="register()">Delete</button>
+        <button class="button" type="submit" ng-click="deleteinvoice()">Delete</button>
     </div>      
 </form>
 </div>

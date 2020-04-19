@@ -378,6 +378,48 @@ app.controller("dashboardController",function($scope, user, $http, $route){
           });
           }
     }
+    $scope.deleteaccount = function(){
+      if($scope.deleteUser.$valid){
+        if(confirm("Are you sure you want to delete entry with ID " + $scope.userID +"?"))
+         $http.post(
+          "requests/accountdelete.php", {
+          'userID': $scope.userID
+          }
+          ).then(function(response) {
+          alert(response.data);
+          $scope.userID= null;
+          $route.reload();
+          });
+          }
+    }
+    $scope.deleteranking = function(){
+      if($scope.deleteRanking.$valid){
+        if(confirm("Are you sure you want to delete entry with ID " + $scope.locID +"?"))
+         $http.post(
+          "requests/rankingdelete.php", {
+          'rankingID': $scope.rankingID
+          }
+          ).then(function(response) {
+          alert(response.data);
+          $scope.rankingID= null;
+          $route.reload();
+          });
+          }
+    }
+    $scope.deleteinvoice = function(){
+      if($scope.deleteInvoice.$valid){
+        if(confirm("Are you sure you want to delete entry with ID " + $scope.locID +"?"))
+         $http.post(
+          "requests/invoicedelete.php", {
+          'invoiceID': $scope.invoiceID
+          }
+          ).then(function(response) {
+          alert(response.data);
+          $scope.invoiceID= null;
+          $route.reload();
+          });
+          }
+    }
 
 });
 app.config(['$httpProvider', function($httpProvider) {
